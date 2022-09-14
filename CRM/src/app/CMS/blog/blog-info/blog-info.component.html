@@ -1,0 +1,359 @@
+<div class="row">
+    <div class="col s12">
+        <div id="input-fields" class="card card-tabs">
+            <div class="card-content">
+                <div class="card-title">
+                    <div class="row">
+                        <div class="col s6 m6 l8">
+                            <div class="col s12 m12 l12">
+                                <h3 class="card-title"><b>{{blogService.formData.Title}} - Bài viết</b></h3>
+                            </div>
+                        </div>
+                        <div class="col s6 m6 l4">
+                            <ul class="tabs">
+                                <li class="tab col s6 p-0"><a class="active p-0" href="#ThongTin">Thông tin</a></li>
+                                <li class="tab col s6 p-0"><a class="p-0" href="#ThuocTinh">Thuộc tính</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="ThongTin">
+                    <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                        <div class="row">
+                            <input name="ID" [(ngModel)]="blogService.formData.ID" type="hidden">
+                            <input name="Image" [(ngModel)]="blogService.formData.Image" type="hidden">
+                            <div class="col s12 m12 l8">
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="ParentID">Chủ đề</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select style="padding-top:10px; padding-bottom:14px;" name="ParentID"
+                                        [(ngModel)]="blogService.formData.ParentID">
+                                        <mat-option *ngFor="let item of blogCategoryService.list" [value]="item.ID">
+                                            {{item.Title}}
+                                        </mat-option>
+                                    </mat-select>
+                                </div>
+                                <!-- <div class="col s12 m12 l12">
+                                    <div class="input-field">
+                                        <div class="input-field col s12 m6 l4">
+                                            <mat-label>Ngày đăng</mat-label>
+                                            <mat-datepicker-toggle matSuffix [for]="DatePost">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #DatePost></mat-datepicker>
+                                        </div>
+                                        <div class="input-field col s12 m12 l6">
+                                           
+                                        </div>
+                                    </div>
+                                </div> -->
+                                
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Title">Tiêu đề</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <input autofocus cdkFocusInitial placeholder="Tiêu đề" name="Title"
+                                        [(ngModel)]="blogService.formData.Title" type="text">
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Description">Mô tả</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <input placeholder="Mô tả" name="Description"
+                                        [(ngModel)]="blogService.formData.Description" type="text">
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="URLCode">URL Code (Tự động)</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <input placeholder="URL Code (Tự động)" name="URLCode"
+                                        [(ngModel)]="blogService.formData.URLCode" type="text">
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Code">Code (Tự động)</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <input placeholder="Code (Tự động)" name="Code"
+                                        [(ngModel)]="blogService.formData.Code" type="text">
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="QuoteDescription">Trích dẫn</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <input placeholder="Trích dẫn" name="QuoteDescription"
+                                        [(ngModel)]="blogService.formData.QuoteDescription" type="text">
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="QuoteAuthor">Tác giả trích dẫn</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <input placeholder="Tác giả" name="QuoteAuthor"
+                                        [(ngModel)]="blogService.formData.QuoteAuthor" type="text">
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="SortOrder">Sắp xếp</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <input placeholder="Sắp xếp" name="SortOrder"
+                                        [(ngModel)]="blogService.formData.SortOrder" type="number">
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <mat-label>Ngày đăng</mat-label>
+                                        <mat-datepicker-toggle matSuffix [for]="DatePost">
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #DatePost></mat-datepicker>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <input [matDatepicker]="DatePost" name="DatePost"
+                                        [(ngModel)]="blogService.formData.DatePost">
+                                </div>
+                            </div>
+                            <div class="col s12 m12 l4">
+                                <div class="input-field">
+                                    <a title="Danh sách" href="javascript:window.open('','_self').close();"
+                                        class="mb-6 btn-floating waves-effect waves-light amber darken-4 mr-1 mb-1"><i
+                                            class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                    <button title="Lưu thay đổi"
+                                        class="mb-6 btn-floating waves-effect waves-light cyan mr-1 mb-1"><i
+                                            class="material-icons">save</i></button>
+                                </div>
+                                <div class="input-field">
+                                    <div class="input-field col s12 m12 l6">
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" name="Active"
+                                                    [(ngModel)]="blogService.formData.Active" />
+                                                <span>Website</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col s12 m12 l6">
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" name="IsBanner"
+                                                    [(ngModel)]="blogService.formData.IsBanner" />
+                                                <span>Banner</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <p>
+                                        <label>
+                                            <input type="checkbox" class="filled-in" name="isTapTinDinhKem"
+                                                [(ngModel)]="isTapTinDinhKem" />
+                                            <span>Tập tin đính kèm</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <input multiple type="file" accept="image/*"
+                                    (change)="changeImage($event.target.files)">
+                                <br />
+                                <br />
+                                <a target="_blank" href="{{blogService.formData.URLImage}}"
+                                    *ngIf="blogService.formData.URLImage" title="{{blogService.formData.URLImage}}">
+                                    <img class="responsive-img" width="30%" title="{{blogService.formData.URLImage}}"
+                                        alt="{{blogService.formData.URLImage}}"
+                                        [src]="blogService.formData.URLImage"></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <ck-editor [config]="{'height': 600}" name="HTMLContent"
+                                    [(ngModel)]="blogService.formData.HTMLContent" skin="moono-lisa" language="en"
+                                    [fullPage]="true"></ck-editor>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="ThuocTinh">
+                    <div class="col s12 m12 l4">
+                        <h3 style="text-align: center;">Tập tin</h3>
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSourceBlogFile" matSort>
+                                <ng-container matColumnDef="Image">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Hình đại diện
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width: 100%; text-align: center;">
+                                            <a target="_blank" title="{{element.URLImage}}"
+                                                href="{{element.URLImage}}"><img width="50%" class="responsive-img"
+                                                    [src]="element.URLImage"></a>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="URLImage">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>URL
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <a target="_blank" title="{{element.URLImage}}"
+                                            href="{{element.URLImage}}">{{element.URLImage}}</a>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Xóa
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="padding-top: 5px; width: 100%; text-align: center;">
+                                            <a title="Xóa" target="_blank" (click)="onBlogFileDelete(element)"
+                                                class="mb-6 btn-floating waves-effect waves-light red accent-2"><i
+                                                    class="material-icons">delete_outline</i></a>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumnsBlogFile"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumnsBlogFile;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']"
+                                    [ngClass]="{'hide':dataSourceBlogFile!=null}"></mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSourceBlogFile!=null && dataSourceBlogFile.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+                            <mat-paginator [pageSizeOptions]="[10,20,50,100]" [pageSize]="1000000"
+                                [showFirstLastButtons]></mat-paginator>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l4">
+                        <h3 style="text-align: center;">Bình luận</h3>
+                        <div class="col s6 m6 l9">
+                            <input placeholder="Bình luận" name="BlogCommentDescription"
+                                [(ngModel)]="blogCommentDescription" type="text">
+                        </div>
+                        <div class="col s6 m6 l3">
+                            <a title="Lưu thay đổi" (click)="onBlogCommentSave()"
+                                class="mb-6 btn-floating waves-effect waves-light cyan mr-1 mb-1"><i
+                                    class="material-icons">save</i></a>
+                        </div>
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSourceBlogComment" matSort>
+                                <ng-container matColumnDef="Description">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Bình luận
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div>
+                                            {{element.Description}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Xóa
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="padding-top: 5px; width: 100%; text-align: center;">
+                                            <a title="Xóa" target="_blank" (click)="onBlogCommentDelete(element)"
+                                                class="mb-6 btn-floating waves-effect waves-light red accent-2"><i
+                                                    class="material-icons">delete_outline</i></a>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumnsBlogComment"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumnsBlogComment;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']"
+                                    [ngClass]="{'hide':dataSourceBlogComment!=null}"></mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSourceBlogComment!=null && dataSourceBlogComment.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+                            <mat-paginator [pageSizeOptions]="[10,20,50,100]" [pageSize]="1000000"
+                                [showFirstLastButtons]></mat-paginator>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l4">
+                        <h3 style="text-align: center;">Tag</h3>
+                        <div class="col s6 m6 l9">
+                            <input placeholder="Tag" name="BlogTagDescription" [(ngModel)]="blogTagDescription"
+                                type="text">
+                        </div>
+                        <div class="col s6 m6 l3">
+                            <a title="Lưu thay đổi" (click)="onBlogTagSave()"
+                                class="mb-6 btn-floating waves-effect waves-light cyan mr-1 mb-1"><i
+                                    class="material-icons">save</i></a>
+                        </div>
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSourceBlogTag" matSort>
+                                <ng-container matColumnDef="Tag">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tag
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div>
+                                            {{element.Tag}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Xóa
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="padding-top: 5px; width: 100%; text-align: center;">
+                                            <a title="Xóa" target="_blank" (click)="onBlogTagDelete(element)"
+                                                class="mb-6 btn-floating waves-effect waves-light red accent-2"><i
+                                                    class="material-icons">delete_outline</i></a>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumnsBlogTag"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumnsBlogTag;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']"
+                                    [ngClass]="{'hide':dataSourceBlogTag!=null}"></mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSourceBlogTag!=null && dataSourceBlogTag.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+                            <mat-paginator [pageSizeOptions]="[10,20,50,100]" [pageSize]="1000000"
+                                [showFirstLastButtons]></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isShowLoading"></app-loading>

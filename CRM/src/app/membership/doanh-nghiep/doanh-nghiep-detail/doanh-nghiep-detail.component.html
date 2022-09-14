@@ -1,0 +1,788 @@
+<style>
+    .mat-column-actions {
+        flex: none;
+        width: 250px;
+        font-size: 12px;
+        color: #000000;
+    }
+    .mat-column-STT {
+        flex: none;
+        width: 50px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+    .mat-column-ProductName {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+    .mat-column-PaymentCode {
+        flex: none;
+        width: 200px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+    .mat-column-ProductCode {
+        flex: none;
+        width: 200px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+    .mat-column-ValueContract {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+    .mat-column-DateContract {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+    .mat-column-DateBegin {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+    .mat-column-DateEnd {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+    .mat-column-ProductCount {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-Year {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-Month {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-Total {
+        flex: none;
+        width: 150px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-NgaySinh {
+        flex: none;
+        width: 150px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-Year {
+        flex: none;
+        width: 200px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-FullName {
+        flex: none;
+        width: 20%;
+        min-width: 200px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-ChucVuName {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-Phone {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-Email {
+        flex: none;
+        width: 150px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+
+    .mat-column-GioiTinh {
+        flex: none;
+        width: 100px;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+    }
+</style>
+
+<div class="row">
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                            <div class="card card card-default scrollspy">
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col s12 m12 l9">
+                                            <h5 class="card-title"><b>{{membershipService.formData.FullName}}</b></h5>
+                                        </div>
+                                        <div class="col s12 m12 l3">
+                                            <a title="Danh sách" routerLink="{{listURL}}"
+                                                class="mb-6 btn-floating waves-effect waves-light amber darken-4 mr-1 mb-1"><i
+                                                    class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                            <a title="Thêm mới" routerLink="{{detailURL}}/0"
+                                                class="mb-6 btn-floating waves-effect waves-light green darken-1 mr-1 mb-1"><i
+                                                    class="material-icons">add</i></a>&nbsp;&nbsp;&nbsp;
+                                            <button title="Lưu thay đổi"
+                                                class="mb-6 btn-floating waves-effect waves-light cyan mr-1 mb-1"><i
+                                                    class="material-icons">save</i></button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <input name="ID" [(ngModel)]="membershipService.formData.ID" type="hidden">
+                                        <div class="col s12 m12 l12">
+                                            <div class="input-field">
+                                                <input autofocus cdkFocusInitial placeholder="Doanh nghiệp"
+                                                    name="FullName" [(ngModel)]="membershipService.formData.FullName"
+                                                    type="text">
+                                                <label for="FullName">Doanh nghiệp</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Mã số thuế" name="TaxCode"
+                                                    [(ngModel)]="membershipService.formData.TaxCode" type="text">
+                                                <label for="TaxCode">Mã số thuế</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Email" name="Email"
+                                                    [(ngModel)]="membershipService.formData.Email" type="text">
+                                                <label for="Email">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="CategoryID">Ngành nghề</mat-label>
+                                                <mat-select name="CategoryID"
+                                                    [(ngModel)]="membershipService.formData.CategoryID">
+                                                    <mat-option *ngFor="let item of listCustomerType" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Mã khách hàng" name="MembershipCode"
+                                                    [(ngModel)]="membershipService.formData.MembershipCode" type="text">
+                                                <label for="MembershipCode">Mã khách hàng</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Tài khoản ngân hàng" name="NganHang_SoTaiKhoan"
+                                                    [(ngModel)]="membershipService.formData.NganHang_SoTaiKhoan"
+                                                    type="text">
+                                                <label for="NganHang_SoTaiKhoan">Tài khoản ngân hàng</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="WardID">Phường, xã, thị trấn</mat-label>
+                                                <mat-select name="WardID"
+                                                    [(ngModel)]="membershipService.formData.WardID">
+                                                    <mat-option *ngFor="let item of listWard" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Điện thoại" name="Phone"
+                                                    [(ngModel)]="membershipService.formData.Phone" type="text">
+                                                <label for="Phone">Điện thoại</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="NganHangID">Ngân hàng</mat-label>
+                                                <mat-select name="NganHangID"
+                                                    [(ngModel)]="membershipService.formData.NganHangID">
+                                                    <mat-option *ngFor="let item of listNganHang" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="CityID">Thành phố, thị xã, huyện</mat-label>
+                                                <mat-select name="CityID"
+                                                    [(ngModel)]="membershipService.formData.CityID">
+                                                    <mat-option *ngFor="let item of listCity" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Fax" name="Fax"
+                                                    [(ngModel)]="membershipService.formData.Fax" type="text">
+                                                <label for="Fax">Fax</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Địa chỉ" name="Address"
+                                                    [(ngModel)]="membershipService.formData.Address" type="text">
+                                                <label for="Address">Địa chỉ</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="ProvinceID">Tỉnh</mat-label>
+                                                <mat-select name="ProvinceID"
+                                                    [(ngModel)]="membershipService.formData.ProvinceID">
+                                                    <mat-option *ngFor="let item of listProvince" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="section section-data-tables">
+            <div class="card card card-default scrollspy">
+                <div class="card-content">
+                    <div class="col s12 m12 l9">
+                        <h3 class="card-title"><b>Người liên hệ</b></h3>
+                    </div>
+                    <div class="col s12 m12 l3">
+                        <a title="Thêm mới" (click)="onAddNguoiLienHe(0)"
+                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                class="material-icons">add</i></a>
+                    </div>
+                    <div class="row">
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSourceNguoiLienHe" matSort>
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="padding-top: 5px; width: 200px;">
+                                            <a title="Chi tiết" (click)="onAddNguoiLienHe(element.ID)"
+                                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                class="material-icons">launch</i></a>&nbsp;&nbsp;&nbsp;
+                                            <a title="Xóa" (click)="onDeleteNguoiLienHe(element.ID)"
+                                                class="mb-6 btn-floating waves-effect waves-light red accent-2"><i
+                                                    class="material-icons">delete_outline</i></a>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="ChucVuName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Chức vụ
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.ChucVuName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="FullName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Họ tên
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.FullName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="Phone">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Điện thoại
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.Phone}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="Email">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Email
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.Email}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="GioiTinh">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Giới tính
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width:100px; text-align: center;">
+                                            {{element.GioiTinh}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="NgaySinh">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Ngày sinh
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width:100px; text-align: right;">
+                                            {{element.NgaySinh | date: 'dd/MM/yyyy'}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumnsNguoiLienHe"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumnsNguoiLienHe;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']"
+                                    [ngClass]="{'hide':dataSourceNguoiLienHe!=null}">
+                                </mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSourceNguoiLienHe!=null && dataSourceNguoiLienHe.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="section section-data-tables">
+            <div class="card card card-default scrollspy">
+                <div class="card-content">
+                    <div class="col s12 m12 l9">
+                        <h3 class="card-title"><b>Dịch vụ tiếp cận</b></h3>
+                    </div>
+                    <div class="col s12 m12 l3">
+                        <a title="Thêm mới" (click)="onAddDichVuTiepCan(0)"
+                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                class="material-icons">add</i></a>
+                    </div>
+                    <div class="row">
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSourceDichVuTiepCan" matSort>
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="padding-top: 5px; width: 250px;">
+                                            <a title="In biểu mẫu" (click)="onPrintHopDongCA(element.ID)"
+                                                class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                    class="material-icons">print</i></a>&nbsp;&nbsp;&nbsp;
+                                            <a title="Chi tiết" (click)="onAddDichVuTiepCan(element.ID)"
+                                                class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                    class="material-icons">launch</i></a>&nbsp;&nbsp;&nbsp;
+                                            <a title="Xóa" (click)="onDeleteDichVuTiepCan(element.ID)"
+                                                class="mb-6 btn-floating waves-effect waves-light red accent-2"><i
+                                                    class="material-icons">delete_outline</i></a>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="ProductName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Dịch vụ
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.ProductName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="GoiCuocName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Gói cước
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.GoiCuocName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="GoiCuocGiaCuoc">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Giá cước
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width:100px; text-align: right;">
+                                            {{element.GoiCuocGiaCuoc | currency:'VND':''}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="NhanVienThucHienFullName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Nhân viên thực hiện
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.NhanVienThucHienFullName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="Note">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>File đính kèm
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div [innerHTML]="element.Note"></div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumnsDichVuTiepCan"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumnsDichVuTiepCan;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']"
+                                    [ngClass]="{'hide':dataSourceDichVuTiepCan!=null}">
+                                </mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSourceDichVuTiepCan!=null && dataSourceDichVuTiepCan.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="section section-data-tables">
+            <div class="card card card-default scrollspy">
+                <div class="card-content">
+                    <div class="col s12 m12 l9">
+                        <h3 class="card-title"><b>Dịch vụ phát triển</b></h3>
+                    </div>
+                    <div class="col s12 m12 l3">
+                    </div>
+                    <div class="row">
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSourceDichVuPhatTrien" matSort>
+                                <ng-container matColumnDef="ProductName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Dịch vụ
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.ProductName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="GoiCuocName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Gói cước
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.GoiCuocName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="GoiCuocGiaCuoc">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Giá cước
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width:100px; text-align: right;">
+                                            {{element.GoiCuocGiaCuoc | currency:'VND':''}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="DateContract">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Ngày ký
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width:100px; text-align: right;">
+                                            {{element.DateContract | date: 'dd/MM/yyyy'}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="NhanVienThucHienFullName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Nhân viên thực hiện
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.NhanVienThucHienFullName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="Note">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>File đính kèm
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div [innerHTML]="element.Note"></div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumnsDichVuPhatTrien"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumnsDichVuPhatTrien;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']"
+                                    [ngClass]="{'hide':dataSourceDichVuPhatTrien!=null}">
+                                </mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSourceDichVuPhatTrien!=null && dataSourceDichVuPhatTrien.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="section section-data-tables">
+            <div class="card card card-default scrollspy">
+                <div class="card-content">
+                    <div class="col s12 m12 l9">
+                        <h3 class="card-title"><b>Dịch vụ đang sử dụng</b></h3>
+                    </div>
+                    <div class="col s12 m12 l1">
+                        <mat-select name="year" [(value)]="year" (selectionChange)="onChangeYear($event)">
+                            <mat-option *ngFor="let item of listYear" [value]="item.Display">
+                                {{item.Display}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col s12 m12 l1">
+                        <mat-select name="month" [(ngModel)]="month" (selectionChange)="onChangeMonth($event)">
+                            <mat-option *ngFor="let item of listMonth" [value]="item.Display">
+                                {{item.Display}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col s12 m12 l1">
+                        <button title="In biểu mẫu" (click)="onPrint()"
+                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                class="material-icons">print</i></button>
+                    </div>
+                    <div class="row">
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSourceDichVuDangSuDung" matSort>
+                                <ng-container matColumnDef="STT">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>STT
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element; let i = index">{{i +1 }}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="ProductName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Dịch vụ
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.ProductName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="PaymentCode">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Mã thanh toán
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.PaymentCode}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="ProductCode">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Mã thuê bao
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.ProductCode}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="Total">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Doanh thu
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width:100px; text-align: right;">
+                                            {{element.Total | currency:'VND':''}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="Year">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Kỳ thanh toán
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width:100px; text-align: right;">
+                                            {{element.Month}} / {{element.Year}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumnsDichVuDangSuDung"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumnsDichVuDangSuDung;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']"
+                                    [ngClass]="{'hide':dataSourceDichVuDangSuDung!=null}">
+                                </mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSourceDichVuDangSuDung!=null && dataSourceDichVuDangSuDung.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="section section-data-tables">
+            <div class="card card card-default scrollspy">
+                <div class="card-content">
+                    <div class="col s12 m12 l9">
+                        <h3 class="card-title"><b>Thống kê Dịch vụ đang sử dụng</b></h3>
+                    </div>
+                    <div class="col s12 m12 l3">
+                    </div>
+                    <div class="row">
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSourceDichVuDangSuDungCount" matSort>
+                                <ng-container matColumnDef="STT">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>STT
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element; let i = index">{{i +1 }}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="ProductName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Dịch vụ
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.ProductName}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="ProductCount">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Số lượng
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width:100px; text-align: right;">
+                                            {{element.ProductCount}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="Total">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Doanh thu
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="width:100px; text-align: right;">
+                                            {{element.Total | currency:'VND':''}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumnsDichVuDangSuDungCount"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumnsDichVuDangSuDungCount;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']"
+                                    [ngClass]="{'hide':dataSourceDichVuDangSuDungCount!=null}">
+                                </mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSourceDichVuDangSuDungCount!=null && dataSourceDichVuDangSuDungCount.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="section section-data-tables">
+            <div class="card card card-default scrollspy">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12 m12 l6">
+                            <h3 class="card-title"><b>Doanh thu</b></h3>
+                        </div>
+                        <div class="col s12 m12 l4">
+                            <mat-select name="productID" [(value)]="productID"
+                                (selectionChange)="onChangeProductID($event)">
+                                <mat-option [value]="0">
+                                    Dịch vụ
+                                </mat-option>
+                                <mat-option *ngFor="let item of listProduct" [value]="item.ProductID">
+                                    {{item.ProductName}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col s12 m12 l2">
+                            <a title="Download PNG" href="#" (click)="onDownloadCanvas($event)">Download PNG</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="KhungOverflow">
+                            <canvas id="DoanhThuTongHop" baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                                [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                                [chartType]="barChartType" [colors]="barChartColors">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isShowLoading"></app-loading>

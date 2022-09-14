@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col s12">
+    <div class="container">
+      <div class="section section-data-tables">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+              <div class="col s12 m12 l9">
+                <h3 class="card-title"><b>Phân công quản lý</b></h3>
+              </div>
+              <div class="col s12 m12 l3">
+                <button type="submit" class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                    class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                <a class="mb-6 btn-floating waves-effect waves-light purple lightrn-1" (click)="onClose()">
+                  <i class="material-icons">close</i>
+                </a>
+              </div>
+              <div class="row">
+                <input name="ID" [(ngModel)]="membershipPropertyService.formData.ID" type="hidden">
+                <div class="col s12">
+                  <div class="input-field col s12 m12 l4">
+                    <mat-label for="cityID">Huyện</mat-label>
+                    <mat-select name="CityID" [(ngModel)]="membershipPropertyService.formData.CityID" (selectionChange)="onChangeCity($event)">
+                      <mat-option [(value)]="membershipPropertyService.formData.CityID">
+                        {{provinceTitle}}
+                      </mat-option>
+                      <mat-option *ngFor="let item of listCity" [value]="item.ID">
+                        {{item.Title}}
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="input-field col s12 m12 l4">
+                    <mat-label for="wardIDList">Xã</mat-label>
+                    <mat-select name="wardIDList" [(value)]="wardIDList" multiple>                     
+                      <mat-option *ngFor="let item of listWard" [value]="item.ID">
+                        {{item.Title}}
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="input-field col s12 m12 l4">
+                    <mat-label for="MembershipID">Nhân viên</mat-label>
+                    <mat-select name="MembershipID" [(ngModel)]="membershipPropertyService.formData.MembershipID">                     
+                      <mat-option *ngFor="let item of listMembership" [value]="item.ID">
+                        {{item.FullName}}
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

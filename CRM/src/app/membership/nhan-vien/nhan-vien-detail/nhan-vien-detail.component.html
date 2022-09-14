@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                            <div class="card card card-default scrollspy">
+                                <div class="card-content">
+                                    <div class="col s12 m12 l9">
+                                        <h3 class="card-title"><b>{{membershipService.formData.FullName}} - Chi tiết</b></h3>
+                                    </div>
+                                    <div class="col s12 m12 l3">
+                                        <a title="Danh sách" routerLink="{{listURL}}"
+                                            class="mb-6 btn-floating waves-effect waves-light amber darken-4 mr-1 mb-1"><i
+                                                class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                        <a title="Thêm mới" routerLink="{{detailURL}}/0"
+                                            class="mb-6 btn-floating waves-effect waves-light green darken-1 mr-1 mb-1"><i
+                                                class="material-icons">add</i></a>&nbsp;&nbsp;&nbsp;
+                                        <button title="Lưu thay đổi"
+                                            class="mb-6 btn-floating waves-effect waves-light cyan mr-1 mb-1"><i
+                                                class="material-icons">save</i></button>
+                                    </div>
+                                    <div class="row">
+                                        <input name="ID" [(ngModel)]="membershipService.formData.ID" type="hidden">
+                                        <div class="col s12 m12 l6">
+                                            <div class="input-field">
+                                                <input autofocus cdkFocusInitial placeholder="Nhân viên" name="FullName"
+                                                    [(ngModel)]="membershipService.formData.FullName" type="text">
+                                                <label for="FullName">Nhân viên</label>
+                                            </div>
+                                            <div class="input-field">
+                                                <input placeholder="Email" name="Email"
+                                                    [(ngModel)]="membershipService.formData.Email" type="text">
+                                                <label for="Email">Email</label>
+                                            </div>
+                                            <div class="input-field">
+                                                <input placeholder="Địa chỉ" name="Address"
+                                                    [(ngModel)]="membershipService.formData.Address" type="text">
+                                                <label for="Address">Địa chỉ</label>
+                                            </div>
+                                            <div class="input-field">
+                                                <input placeholder="Tài khoản VNPT" name="Account"
+                                                    [(ngModel)]="membershipService.formData.Account" type="text">
+                                                <label for="Account">Tài khoản VNPT</label>
+                                            </div>
+                                            <div class="input-field">
+                                                <input placeholder="Điện thoại (Tài khoản đăng nhập ERP)" name="Phone"
+                                                    [(ngModel)]="membershipService.formData.Phone" type="text">
+                                                <label for="Phone">Điện thoại (Tài khoản đăng nhập ERP)</label>
+                                            </div>
+                                            <div class="input-field">
+                                                <input placeholder="Mật khẩu" name="Password"
+                                                    [(ngModel)]="membershipService.formData.Password" type="password">
+                                                <label for="Password">Mật khẩu</label>
+                                            </div>
+                                            <div class="input-field">
+                                                <mat-label for="ParentID">Nhóm (Phân quyền)</mat-label>
+                                                <mat-select name="ParentID"
+                                                    [(ngModel)]="membershipService.formData.ParentID">
+                                                    <mat-option *ngFor="let item of configService.list"
+                                                        [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l6">
+                                            <input type="file" #Image accept="image/*"
+                                                (change)="changeImage($event.target.files)">
+                                            <br/>
+                                            <br/>
+                                            <img class="responsive-img" width="50%"
+                                                title={{membershipService.formData.FullName}}
+                                                alt={{membershipService.formData.FullName}}
+                                                [src]="membershipService.formData.Image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

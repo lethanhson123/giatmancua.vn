@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                            <div class="card card card-default scrollspy">
+                                <div class="card-content">
+                                    <div class="col s12 m12 l10">
+                                        <h3 class="card-title"><b>{{blogCategoryService.formData.Title}} - Chi tiết</b>
+                                        </h3>
+                                    </div>
+                                    <div class="col s12 m12 l2">
+                                        <a title="Danh sách" href="javascript:window.open('','_self').close();"
+                                            class="mb-6 btn-floating waves-effect waves-light amber darken-4 mr-1 mb-1"><i
+                                                class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                        <button title="Lưu thay đổi"
+                                            class="mb-6 btn-floating waves-effect waves-light cyan mr-1 mb-1"><i
+                                                class="material-icons">save</i></button>
+                                    </div>
+                                    <div class="row">
+                                        <input name="ID" [(ngModel)]="blogCategoryService.formData.ID" type="hidden">
+                                        <div class="col s12 m12 l6">
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="Title">Chủ đề</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input autofocus cdkFocusInitial placeholder="Chủ đề" name="Title"
+                                                    [(ngModel)]="blogCategoryService.formData.Title" type="text">
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="Description">Mô tả</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="Mô tả" name="Description"
+                                                    [(ngModel)]="blogCategoryService.formData.Description" type="text">
+                                            </div>
+                                            <div class="col s12 m12 l12">
+                                                <div class="input-field">
+                                                    <p>
+                                                        <label>
+                                                            <input type="checkbox" class="filled-in" name="Active"
+                                                                [(ngModel)]="blogCategoryService.formData.Active" />
+                                                            <span>Website</span>
+                                                        </label>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l6">
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="URLCode">URL Code (Tự động)</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="URL Code (Tự động)" name="URLCode"
+                                                    [(ngModel)]="blogCategoryService.formData.URLCode" type="text">
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="Code">Code (Tự động)</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="Code (Tự động)" name="Code"
+                                                    [(ngModel)]="blogCategoryService.formData.Code" type="text">
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="SortOrder">Sắp xếp</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="Sắp xếp" name="SortOrder"
+                                                    [(ngModel)]="blogCategoryService.formData.SortOrder" type="number">
+                                            </div>                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

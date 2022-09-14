@@ -1,0 +1,189 @@
+﻿@model VNPT2021.Data.ViewModels.BaseViewModel;
+@inject VNPT2021.Data.Repositories.IBlogCategoryRepository blogCategoryRepository
+@inject VNPT2021.Data.Repositories.IBlogRepository blogRepository
+@{
+	List<VNPT2021.Data.Models.BlogCategory> listBlogCategoryActiveIsTrue = blogCategoryRepository.GetByActiveIsTrueToList();
+	List<VNPT2021.Data.Models.Blog> listBlog = blogRepository.GetBySearchAndActiveToList(Model.QueryString, true).OrderByDescending(model => model.DatePost).ToList();
+	string url = VNPT2021.Helpers.AppGlobal.DomainURL + "tag/" + Model.QueryString;
+	ViewData["Title"] = Model.QueryString;
+	ViewData["URLCurrent"] = url;
+	ViewData["URLImage"] = VNPT2021.Helpers.AppGlobal.HomepageImageURL;
+}
+<section class="page-title-area" data-background="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/img/bg/page-title-bg.jpg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="page-title-content text-center">
+					<div class="page-title-heading">
+						<h1><a href="@url" title="@Model.QueryString">@Model.QueryString</a></h1>
+					</div>
+					<nav class="grb-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="Home">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page"><a href="@url" title="@Model.QueryString">@Model.QueryString</a></li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="blog-main-area pt-150">
+	<div class="container">
+		<div class="row wow fadeInUp">
+			<div class="col-lg-8">
+				<div class="blog-main">
+					@{
+						foreach (VNPT2021.Data.Models.Blog item in listBlog)
+						{
+							VNPT2021.Data.Models.BlogCategory blogCategory = blogCategoryRepository.GetByID(item.ParentID.Value);
+
+							string itemURL = VNPT2021.Helpers.AppGlobal.DomainURL + item.Code + "/" + item.URLCode + "-" + item.ID + ".html";
+							string itemBlogCategoryURL = VNPT2021.Helpers.AppGlobal.DomainURL + blogCategory.Code + "/" + blogCategory.URLCode + "-" + blogCategory.ID + ".html";
+							@Html.Raw(@"<div class='blog-main-single mb-60'>")
+							;
+							@Html.Raw(@"<div class='bms-img mb-30'>")
+							;
+							@Html.Raw(@"<a href='"+itemURL+"' title='"+item.Title+"'><img style='width: 750px; height: 400px;' src='"+item.URLImage+"' alt='"+item.Title+"' title='"+item.Title+"'></a>")
+							;
+							@Html.Raw(@"</div>")
+							;
+							@Html.Raw(@"<div class='bms-content'>")
+							;
+							@Html.Raw(@"<div class='fix mb-30'>")
+							;
+							@Html.Raw(@"<div class='blog-date bms-date'>")
+							;
+							@Html.Raw(@"<i class='fal fa-calendar-alt'></i>")
+							;
+							@Html.Raw(@"<span>"+item.DatePost.Value.Day+"</span>")
+							;
+							@Html.Raw(@"<p>"+ item.DatePost.Value.ToString("MMMM")+" "+item.DatePost.Value.Year+"</p>")
+							;
+							@Html.Raw(@"</div>")
+							;
+							@Html.Raw(@"<div class='bms-title'>")
+							;
+							@Html.Raw(@"<ul class='project-like-view bms-lv'>")
+							;
+							@Html.Raw(@"<li>")
+							;
+							@Html.Raw(@"<a href='"+itemBlogCategoryURL+"' title='"+blogCategory.Title+"'>")
+							;
+							@Html.Raw(@"<i class='fas fa-folder-open'></i>" + blogCategory.Title)
+							;
+							@Html.Raw(@"</a>")
+							;
+							@Html.Raw(@"</li>")
+							;
+							@Html.Raw(@"</ul>")
+							;
+							@Html.Raw(@"<h4>")
+							;
+							@Html.Raw(@"<a href='"+itemURL+"'>"+item.Title+"</a>")
+							;
+							@Html.Raw(@"</h4>")
+							;
+							@Html.Raw(@"</div>")
+							;
+							@Html.Raw(@"</div>")
+							;
+							@Html.Raw(@"<p>"+item.Description+"</p>")
+							;
+							@Html.Raw(@"<div class='bms-btn mt-45'>")
+							;
+							@Html.Raw(@"<a href='"+itemURL+"' class='grb-border-btn st-1' title='Đọc thêm'>Đọc thêm</a>")
+							;
+							@Html.Raw(@"</div>")
+							;
+							@Html.Raw(@"</div>")
+							;
+							@Html.Raw(@"</div>")
+							;
+						}
+					}
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="blog-sidebar">
+					<div class="bs-widget mb-30">
+						<div class="bs-widget-title mb-40">
+							<h5>Danh mục</h5>
+						</div>
+						<ul class="bs-category-list">
+							@{
+								foreach (VNPT2021.Data.Models.BlogCategory item in listBlogCategoryActiveIsTrue)
+								{
+									string itemURL = VNPT2021.Helpers.AppGlobal.DomainURL + item.Code + "/" + item.URLCode + "-" + item.ID + ".html";
+									@Html.Raw(@"<li>")
+									;
+									@Html.Raw(@"<a href='"+itemURL+"' title='"+item.Title+"'>")
+									;
+									@Html.Raw(@"<p>"+item.Title+"</p><span>("+item.BlogCountActive+")</span>")
+									;
+									@Html.Raw(@"</a>")
+									;
+									@Html.Raw(@"</li>")
+									;
+								}
+							}
+						</ul>
+					</div>
+					@{
+						foreach (VNPT2021.Data.Models.BlogCategory item in listBlogCategoryActiveIsTrue)
+						{
+							string itemURL = VNPT2021.Helpers.AppGlobal.DomainURL + item.Code + "/" + item.URLCode + "-" + item.ID + ".html";
+							@Html.Raw(@"<div class='bs-widget mb-30'>")
+							;
+							@Html.Raw(@"<div class='bs-widget-title mb-40'>")
+							;
+							@Html.Raw(@"<h5><a href='"+itemURL+"' title='"+item.Title+"'>"+item.Title+"</a></h5>")
+							;
+							@Html.Raw(@"</div>")
+							;
+							@Html.Raw(@"<ul class='bs-post'>")
+							;
+							List<VNPT2021.Data.Models.Blog> listBlogSub = blogRepository.GetByParentIDAndActiveToList(item.ID, true).OrderByDescending(model => model.DatePost).ToList();
+							foreach (VNPT2021.Data.Models.Blog itemBlog in listBlogSub)
+							{
+								string itemBlogURL = VNPT2021.Helpers.AppGlobal.DomainURL + itemBlog.Code + "/" + itemBlog.URLCode + "-" + itemBlog.ID + ".html";
+								@Html.Raw(@"<li class='bs-post-single'>")
+								;
+								@Html.Raw(@"<div class='bs-post-img'>")
+								;
+								@Html.Raw(@"<a href='"+itemBlogURL+"' title='"+itemBlog.Title+"'>")
+								;
+								@Html.Raw(@"<img src='"+itemBlog.URLImage+"' title='"+itemBlog.Title+"' alt='"+itemBlog.Title+"'>")
+								;
+								@Html.Raw(@"</a>")
+								;
+								@Html.Raw(@"</div>")
+								;
+								@Html.Raw(@"<div class='bs-post-content'>")
+								;
+								@Html.Raw(@"<h6>")
+								;
+								@Html.Raw(@"<a href='"+itemBlogURL+"' title='"+itemBlog.Title+"'>"+itemBlog.Title+"</a>")
+								;
+								@Html.Raw(@"</h6>")
+								;
+								@Html.Raw(@"<span>"+itemBlog.DatePost.Value.Day + " " + itemBlog.DatePost.Value.ToString("MMMM")+  " " + itemBlog.DatePost.Value.Year +"</span>")
+								;
+								@Html.Raw(@"</div>")
+								;
+								@Html.Raw(@"</li>")
+								;
+							}
+							@Html.Raw(@"</ul>")
+							;
+							@Html.Raw(@"</div>")
+							;
+						}
+					}
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

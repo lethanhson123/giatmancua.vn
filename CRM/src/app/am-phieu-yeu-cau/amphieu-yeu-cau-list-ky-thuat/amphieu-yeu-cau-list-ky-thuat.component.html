@@ -1,0 +1,321 @@
+<div class="row">
+  <div class="col s12">
+    <div id="card-stats">
+      <div class="row">
+        <div class="col s12 m6 l3">
+          <div class="card animate fadeLeft">
+            <div class="card-content cyan white-text">
+              <p class="card-stats-title">
+                <i class="material-icons">person_outline</i> Yêu cầu
+              </p>
+              <h4 class="card-stats-number white-text" id="DoanhNghiepTongCong">
+                {{ daGuiCount }}
+              </h4>
+            </div>
+            <div class="card-action cyan darken-1">
+              <div id="clients-bar" class="center-align"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card animate fadeRight">
+            <div class="card-content green lighten-1 white-text">
+              <p class="card-stats-title">
+                <i class="material-icons">content_copy</i> Đã tiếp nhận
+              </p>
+              <h4 class="card-stats-number white-text" id="KhachHangTongCong">
+                {{ daNhanCount }}
+              </h4>
+            </div>
+            <div class="card-action green">
+              <div id="invoice-line" class="center-align"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card animate fadeLeft">
+            <div class="card-content red accent-2 white-text">
+              <p class="card-stats-title">
+                <i class="material-icons">attach_money</i>Đang xử lý
+              </p>
+              <h4 class="card-stats-number white-text" id="DoanhThuNamTongCong">
+                {{ dangXuLyCount }}
+              </h4>
+            </div>
+            <div class="card-action red">
+              <div id="sales-compositebar" class="center-align"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card animate fadeRight">
+            <div class="card-content orange lighten-1 white-text">
+              <p class="card-stats-title">
+                <i class="material-icons">trending_up</i> Hoàn thành
+              </p>
+              <h4
+                class="card-stats-number white-text"
+                id="DoanhThuThangTongCong"
+              >
+                {{ hoanThanhCount }}
+              </h4>
+            </div>
+            <div class="card-action orange">
+              <div id="profit-tristate" class="center-align"></div>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col s12">
+      <div class="container">
+        <div class="section section-data-tables">
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="card card card-default scrollspy">
+                <div class="card-content">
+                  <div class="col s12 m12 l9">
+                    <h3 class="card-title">
+                      <b>Hoàn thành</b>
+                    </h3>
+                  </div>
+                  <div class="col s12 m12 l3"></div>
+                  <div class="row">     
+                    <table class="border01" id="Data" cellspacing="4" style="background-color:#ffffff; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>Xem</a></th>
+                                <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>STT</a></th>
+                                <th class='text-center' style='width: 15%;'><a style='cursor:pointer;'>Ngày yêu cầu</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>MST</a></th>
+                                <th class='text-center' style='width: 20%;'><a style='cursor:pointer;'>Khách hàng</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>AM yêu cầu</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>Người nhận</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>Số lượng</a></th>
+                                <th class='text-center' style='width: 15%;'><a style='cursor:pointer;'>Kết quả</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color:#ffffff;" *ngFor="let item of listHoanThanh; let i = index;">
+                                <td class="text-center" style="text-align: center;"><a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{infoURL}}/{{item.ID}}"
+                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                        class="material-icons">print</i></a></td>
+                                <td class="text-center" style="text-align: center;">{{i + 1}}</td>
+                                <td class="text-center" style="text-align: right;">{{item.NgayTao | date: "dd/MM/yyyy HH:mm:ss"}}</td>
+                                <td class="text-left" style="text-align: left;">
+                                    <a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{doanhNghiepDetailURL}}/{{item.KhachHangID}}">{{item.TaxCode}}</a>                                    
+                                </td>
+                                <td class="text-center" style="text-align: left;">
+                                    <a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{doanhNghiepDetailURL}}/{{item.KhachHangID}}">{{item.KhachHang}}</a>
+                                </td>
+                                <td class="text-center" style="text-align: center;">{{item.NguoiTao}}</td>
+                                <td class="text-center" style="text-align: center;">{{item.NguoiNhan}}</td>
+                                <td class="text-center" style="text-align: right;">{{item.SoLuongHoaDon | currency: "VND":""}}</td>
+                                <td class="text-center" style="text-align: center;">{{item.KetQua}}</td>
+                            </tr>
+                        </tbody>
+                    </table>              
+                  </div>                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+      <div class="container">
+        <div class="section section-data-tables">
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="card card card-default scrollspy">
+                <div class="card-content">
+                  <div class="col s12 m12 l9">
+                    <h3 class="card-title">
+                      <b>Đang xử lý</b>
+                    </h3>
+                  </div>
+                  <div class="col s12 m12 l3"></div>
+                  <div class="row">     
+                    <table class="border01" id="Data" cellspacing="4" style="background-color:#ffffff; width: 100%;">
+                        <thead>
+                            <tr>
+                              <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>Hoàn thành</a></th>
+                                <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>Xem</a></th>
+                                <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>STT</a></th>
+                                <th class='text-center' style='width: 15%;'><a style='cursor:pointer;'>Ngày yêu cầu</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>MST</a></th>
+                                <th class='text-center' style='width: 20%;'><a style='cursor:pointer;'>Khách hàng</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>AM yêu cầu</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>Người nhận</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>Số lượng</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color:#ffffff;" *ngFor="let item of listDangXuLy; let i = index;">
+                              <td class="text-center" style="text-align: center;">                               
+                                <a title="{{item.KhachHang}}}" target="_blank"
+                                routerLink="{{hoanThanhURL}}/{{item.ID}}"
+                                class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                                    class="material-icons">save</i></a>                              
+                              </td>
+                                <td class="text-center" style="text-align: center;"><a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{infoURL}}/{{item.ID}}"
+                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                        class="material-icons">print</i></a></td>
+                                <td class="text-center" style="text-align: center;">{{i + 1}}</td>
+                                <td class="text-center" style="text-align: right;">{{item.NgayTao | date: "dd/MM/yyyy HH:mm:ss"}}</td>
+                                <td class="text-left" style="text-align: left;">
+                                    <a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{doanhNghiepDetailURL}}/{{item.KhachHangID}}">{{item.TaxCode}}</a>                                    
+                                </td>
+                                <td class="text-center" style="text-align: left;">
+                                    <a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{doanhNghiepDetailURL}}/{{item.KhachHangID}}">{{item.KhachHang}}</a>
+                                </td>
+                                <td class="text-center" style="text-align: center;">{{item.NguoiTao}}</td>
+                                <td class="text-center" style="text-align: center;">{{item.NguoiNhan}}</td>
+                                <td class="text-center" style="text-align: right;">{{item.SoLuongHoaDon | currency: "VND":""}}</td>                                
+                            </tr>
+                        </tbody>
+                    </table>              
+                  </div>                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+      <div class="container">
+        <div class="section section-data-tables">
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="card card card-default scrollspy">
+                <div class="card-content">
+                  <div class="col s12 m12 l9">
+                    <h3 class="card-title">
+                      <b>Đã nhận</b>
+                    </h3>
+                  </div>
+                  <div class="col s12 m12 l3"></div>
+                  <div class="row">     
+                    <table class="border01" id="Data" cellspacing="4" style="background-color:#ffffff; width: 100%;">
+                        <thead>
+                            <tr>
+                              <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>Xử lý</a></th>
+                                <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>Xem</a></th>
+                                <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>STT</a></th>
+                                <th class='text-center' style='width: 15%;'><a style='cursor:pointer;'>Ngày yêu cầu</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>MST</a></th>
+                                <th class='text-center' style='width: 20%;'><a style='cursor:pointer;'>Khách hàng</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>AM yêu cầu</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>Người nhận</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>Số lượng</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color:#ffffff;" *ngFor="let item of listDaNhan; let i = index;">
+                              <td class="text-center" style="text-align: center;"><button (click)="onDangXuLy(item.ID)" class="mb-6 btn-floating waves-effect waves-light cyan"><i class="material-icons">save</i></button></td>
+                                <td class="text-center" style="text-align: center;"><a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{infoURL}}/{{item.ID}}"
+                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                        class="material-icons">print</i></a></td>
+                                <td class="text-center" style="text-align: center;">{{i + 1}}</td>
+                                <td class="text-center" style="text-align: right;">{{item.NgayTao | date: "dd/MM/yyyy HH:mm:ss"}}</td>
+                                <td class="text-left" style="text-align: left;">
+                                    <a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{doanhNghiepDetailURL}}/{{item.KhachHangID}}">{{item.TaxCode}}</a>                                    
+                                </td>
+                                <td class="text-center" style="text-align: left;">
+                                    <a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{doanhNghiepDetailURL}}/{{item.KhachHangID}}">{{item.KhachHang}}</a>
+                                </td>
+                                <td class="text-center" style="text-align: center;">{{item.NguoiTao}}</td>
+                                <td class="text-center" style="text-align: center;">{{item.NguoiNhan}}</td>
+                                <td class="text-center" style="text-align: right;">{{item.SoLuongHoaDon | currency: "VND":""}}</td>                                
+                            </tr>
+                        </tbody>
+                    </table>              
+                  </div>                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+      <div class="container">
+        <div class="section section-data-tables">
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="card card card-default scrollspy">
+                <div class="card-content">
+                  <div class="col s12 m12 l9">
+                    <h3 class="card-title">
+                      <b>Đã gửi</b>
+                    </h3>
+                  </div>
+                  <div class="col s12 m12 l3"></div>
+                  <div class="row">     
+                    <table class="border01" id="Data" cellspacing="4" style="background-color:#ffffff; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>Tiếp nhận</a></th>
+                                <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>Xem</a></th>
+                                <th class='text-center' style='width: 5%;'><a style='cursor:pointer;'>STT</a></th>
+                                <th class='text-center' style='width: 15%;'><a style='cursor:pointer;'>Ngày yêu cầu</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>MST</a></th>
+                                <th class='text-center' style='width: 20%;'><a style='cursor:pointer;'>Khách hàng</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>AM yêu cầu</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>Người nhận</a></th>
+                                <th class='text-center' style='width: 10%;'><a style='cursor:pointer;'>Số lượng</a></th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color:#ffffff;" *ngFor="let item of listDaGui; let i = index;">
+                                <td class="text-center" style="text-align: center;"><button (click)="onDaNhan(item.ID)" class="mb-6 btn-floating waves-effect waves-light cyan"><i class="material-icons">save</i></button></td>
+                                <td class="text-center" style="text-align: center;"><a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{infoURL}}/{{item.ID}}"
+                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                        class="material-icons">print</i></a></td>
+                                <td class="text-center" style="text-align: center;">{{i + 1}}</td>
+                                <td class="text-center" style="text-align: right;">{{item.NgayTao | date: "dd/MM/yyyy HH:mm:ss"}}</td>
+                                <td class="text-left" style="text-align: left;">
+                                    <a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{doanhNghiepDetailURL}}/{{item.KhachHangID}}">{{item.TaxCode}}</a>                                    
+                                </td>
+                                <td class="text-center" style="text-align: left;">
+                                    <a title="{{item.KhachHang}}}" target="_blank"
+                                    routerLink="{{doanhNghiepDetailURL}}/{{item.KhachHangID}}">{{item.KhachHang}}</a>
+                                </td>
+                                <td class="text-center" style="text-align: center;">{{item.NguoiTao}}</td>
+                                <td class="text-center" style="text-align: center;">{{item.NguoiNhan}}</td>
+                                <td class="text-center" style="text-align: right;">{{item.SoLuongHoaDon | currency: "VND":""}}</td>                                
+                            </tr>
+                        </tbody>
+                    </table>              
+                  </div>                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  

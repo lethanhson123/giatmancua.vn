@@ -1,0 +1,147 @@
+<div class="row">
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <div class="card card card-default scrollspy">
+                            <div class="card-content">
+                                <div class="col s6 m6 l9">
+                                    <h3 class="card-title"><b>Upload</b></h3>
+                                </div>
+                                <div class="col s6 m6 l3">
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m6 l4">
+                                        <h4 class="card-title">Doanh thu theo tháng</h4>
+                                        <form autocomplete="off" class="row" #InvoiceFile="ngForm"
+                                            (submit)="onSubmitInvoice()">
+                                            <div class="input-field col s12">
+                                                Bước 01: File excel mẫu:
+                                                <a target="_blank" href="{{invoiceURL}}">Download</a>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                Bước 02: Chọn file excel có dữ liệu:
+                                                <input type="file" #File
+                                                    (change)="onChangeInvoice($event.target.files)">
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <div class="col s6">
+                                                    <mat-select name="year" [(ngModel)]="year">
+                                                        <mat-option *ngFor="let item of listYear"
+                                                            [value]="item.Display">
+                                                            {{item.Display}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </div>
+                                                <div class="col s6">
+                                                    <mat-select name="month" [(ngModel)]="month">
+                                                        <mat-option *ngFor="let item of listMonth"
+                                                            [value]="item.Display">
+                                                            {{item.Display}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </div>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <button class="btn btn-primary">Upload doanh thu</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col s12 m6 l4">
+                                        <h4 class="card-title">Doanh thu theo tháng</h4>
+                                        <form autocomplete="off" class="row" #InvoiceFile="ngForm"
+                                            (submit)="onDeleteInvoice()">
+                                            <div class="input-field col s12">
+                                                <div class="col s6">
+                                                    <mat-select name="yearDelete" [(ngModel)]="yearDelete">
+                                                        <mat-option *ngFor="let item of listYear"
+                                                            [value]="item.Display">
+                                                            {{item.Display}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </div>
+                                                <div class="col s6">
+                                                    <mat-select name="monthDelete" [(ngModel)]="monthDelete">
+                                                        <mat-option *ngFor="let item of listMonth"
+                                                            [value]="item.Display">
+                                                            {{item.Display}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </div>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <button class="btn waves-effect waves-light red accent-2">Xóa doanh
+                                                    thu</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col s12 m6 l4">
+                                        <h4 class="card-title">Khách hàng</h4>
+                                        <form autocomplete="off" class="row" #CustomerFile="ngForm"
+                                            (submit)="onSubmitCustomer()">
+                                            <div class="input-field col s12">
+                                                Bước 01: File excel mẫu:
+                                                <a target="_blank" href="{{customerURL}}">Download</a>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                Bước 02: Chọn file excel có dữ liệu:
+                                                <input type="file" #File
+                                                    (change)="onChangeCustomer($event.target.files)">
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <button class="btn btn-primary">Upload Khách hàng</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m6 l4">
+                                        <h4 class="card-title">CA</h4>
+                                        <form autocomplete="off" class="row" #CAFile="ngForm"
+                                            (submit)="onSubmitCADangKy()">
+                                            <div class="input-field col s12">
+                                                Bước 01: File excel mẫu:
+                                                <a target="_blank" href="{{cADangKyURL}}">Download</a>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                Bước 02: Chọn file excel có dữ liệu:
+                                                <input type="file" #File
+                                                    (change)="onChangeCADangKy($event.target.files)">
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <div class="col s6"><button class="btn btn-primary">Upload</button></div>
+                                                <div class="col s6"><a (click)="onDeleteCA()" class="btn waves-effect waves-light red accent-2">Xóa</a></div>
+                                            </div>
+                                        </form>                                       
+                                    </div>
+                                    <div class="col s12 m6 l4">
+                                        <h4 class="card-title">Dịch vụ</h4>
+                                        <form autocomplete="off" class="row" #ProductFile="ngForm"
+                                            (submit)="onSubmitProduct()">
+                                            <div class="input-field col s12">
+                                                Bước 01: File excel mẫu:
+                                                <a target="_blank" href="{{productURL}}">Download</a>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                Bước 02: Chọn file excel có dữ liệu:
+                                                <input type="file" #File
+                                                    (change)="onChangeProduct($event.target.files)">
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <button class="btn btn-primary">Upload dịch vụ</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loading *ngIf="isShowLoading"></app-loading>

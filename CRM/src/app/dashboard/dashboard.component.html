@@ -1,0 +1,203 @@
+<style>
+    .mat-column-Phone {
+        flex: none;
+        min-width: 100px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+    .mat-column-FullName {
+        flex: none;
+        width: 50%;
+        min-width: 500px;
+        font-size: 12px;
+        color: #000000;
+    }
+    .mat-column-TieuDe {
+        flex: none;
+        width: 50%;
+        min-width: 400px;
+        font-size: 12px;
+        color: #000000;
+    }
+</style>
+
+<div class="row">
+    <div class="col s12">
+        <div id="card-stats">
+            <div class="row">
+                <div class="col s12 m6 l3">
+                    <div class="card animate fadeLeft">
+                        <div class="card-content cyan white-text">
+                            <p class="card-stats-title"><i class="material-icons">person_outline</i> Doanh nghiệp</p>
+                            <h4 class="card-stats-number white-text" id="DoanhNghiepTongCong">
+                                {{dashboard.DoanhNghiepTongCong | currency:'VND':''}}</h4>
+                        </div>
+                        <div class="card-action cyan darken-1">
+                            <div id="clients-bar" class="center-align"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="card animate fadeRight">
+                        <div class="card-content green lighten-1 white-text">
+                            <p class="card-stats-title"><i class="material-icons">content_copy</i> Hợp đồng</p>
+                            <h4 class="card-stats-number white-text" id="KhachHangTongCong">
+                                {{dashboard.KhachHangTongCong | currency:'VND':''}}</h4>
+                        </div>
+                        <div class="card-action green">
+                            <div id="invoice-line" class="center-align"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="card animate fadeLeft">
+                        <div class="card-content red accent-2 white-text">
+                            <p class="card-stats-title"><i class="material-icons">attach_money</i>Doanh thu năm</p>
+                            <h4 class="card-stats-number white-text" id="DoanhThuNamTongCong">
+                                {{dashboard.DoanhThuNamTongCong | currency:'VND':''}}</h4>
+                        </div>
+                        <div class="card-action red">
+                            <div id="sales-compositebar" class="center-align"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="card animate fadeRight">
+                        <div class="card-content orange lighten-1 white-text">
+                            <p class="card-stats-title"><i class="material-icons">trending_up</i> Doanh thu tháng</p>
+                            <h4 class="card-stats-number white-text" id="DoanhThuThangTongCong">
+                                {{dashboard.DoanhThuThangTongCong | currency:'VND':''}}</h4>
+                        </div>
+                        <div class="card-action orange">
+                            <div id="profit-tristate" class="center-align"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section section-data-tables">
+    <div class="row">
+        <div class="col s12 m12 l6">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12 m12 l9">
+                            <a title="Khách hàng CA hết hạn" routerLink="/Membership/DoanhNghiepCAHetHan">
+                                <h3 class="card-title"><b>Khách hàng CA hết hạn</b></h3>
+                            </a>
+                        </div>
+                        <div class="col s12 m12 l3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="KhungOverflow">
+                                <mat-table [dataSource]="dataSourceDoanhNghiepCAHetHan" matSort>
+                                    <ng-container matColumnDef="FullName">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>Khách hàng
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element">
+                                            <a title="{{element.FullName}}}" target="_blank"
+                                                routerLink="{{detailURL}}/{{element.ID}}">{{element.FullName}}</a>
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="Phone">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>Điện thoại
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element">
+                                            <div style="width:100px; text-align: right;">
+                                                {{element.Phone}}
+                                            </div>
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="loading">
+                                        <mat-footer-cell *matFooterCellDef colspan="4">
+                                            Đang tải dữ liệu...
+                                        </mat-footer-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="noData">
+                                        <mat-footer-cell *matFooterCellDef colspan="4">
+                                            Chưa có dữ liệu.
+                                        </mat-footer-cell>
+                                    </ng-container>
+                                    <mat-header-row *matHeaderRowDef="displayColumnsDoanhNghiepCAHetHan">
+                                    </mat-header-row>
+                                    <mat-row *matRowDef="let row; columns: displayColumnsDoanhNghiepCAHetHan;">
+                                    </mat-row>
+                                    <mat-footer-row *matFooterRowDef="['loading']"
+                                        [ngClass]="{'hide':dataSourceDoanhNghiepCAHetHan!=null}"></mat-footer-row>
+                                    <mat-footer-row *matFooterRowDef="['noData']"
+                                        [ngClass]="{'hide':!(dataSourceDoanhNghiepCAHetHan!=null && dataSourceDoanhNghiepCAHetHan.data.length==0)}">
+                                    </mat-footer-row>
+                                </mat-table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m12 l6">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12 m12 l9">
+                            <h3 class="card-title"><b>Phiếu yêu cầu AM</b></h3>
+                        </div>
+                        <div class="col s12 m12 l3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="KhungOverflow">
+                                <mat-table [dataSource]="dataSourceAM_PhieuYeuCau" matSort>
+                                    <ng-container matColumnDef="TieuDe">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>Phiếu yêu cầu
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element">
+                                            <a title="{{element.FullName}}}" target="_blank"
+                                                routerLink="{{infoURL}}/{{element.ID}}">{{element.TieuDe}}</a>
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="NgayTao">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>Ngày tạo
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element">
+                                            <div style="width:200px; text-align: right;">
+                                                {{element.NgayTao | date: "dd/MM/yyyy HH:mm:ss"}}
+                                            </div>
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="loading">
+                                        <mat-footer-cell *matFooterCellDef colspan="4">
+                                            Đang tải dữ liệu...
+                                        </mat-footer-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="noData">
+                                        <mat-footer-cell *matFooterCellDef colspan="4">
+                                            Chưa có dữ liệu.
+                                        </mat-footer-cell>
+                                    </ng-container>
+                                    <mat-header-row *matHeaderRowDef="displayColumnsAM_PhieuYeuCau">
+                                    </mat-header-row>
+                                    <mat-row *matRowDef="let row; columns: displayColumnsAM_PhieuYeuCau;">
+                                    </mat-row>
+                                    <mat-footer-row *matFooterRowDef="['loading']"
+                                        [ngClass]="{'hide':dataSourceAM_PhieuYeuCau!=null}"></mat-footer-row>
+                                    <mat-footer-row *matFooterRowDef="['noData']"
+                                        [ngClass]="{'hide':!(dataSourceAM_PhieuYeuCau!=null && dataSourceAM_PhieuYeuCau.data.length==0)}">
+                                    </mat-footer-row>
+                                </mat-table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

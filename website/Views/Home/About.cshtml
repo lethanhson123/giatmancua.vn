@@ -1,0 +1,130 @@
+﻿@inject VNPT2021.Data.Repositories.IBlogCategoryRepository blogCategoryRepository
+@inject VNPT2021.Data.Repositories.IBlogRepository blogRepository
+@inject VNPT2021.Data.Repositories.IMembershipRepository membershipRepository
+@{
+	VNPT2021.Data.Models.BlogCategory blogCategoryGioiThieu = blogCategoryRepository.GetByID(VNPT2021.Helpers.AppGlobal.BlogCategoryGioiThieuID);
+	VNPT2021.Data.Models.Blog gioiThieu = blogRepository.GetByID(VNPT2021.Helpers.AppGlobal.BlogGioiThieuID);
+	List<VNPT2021.Data.Models.Membership> listNhanVien = membershipRepository.GetByNhanVienAndIsWebsiteToList(true).OrderBy(model => model.FullName).ToList();
+
+	string url = VNPT2021.Helpers.AppGlobal.DomainURL + "gioi-thieu.html";
+
+	ViewData["Title"] = gioiThieu.Title;
+	ViewData["URLCurrent"] = url;
+	ViewData["URLImage"] = gioiThieu.URLImage;
+
+
+}
+<section class="page-title-area" data-background="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/img/bg/page-title-bg.jpg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="page-title-content text-center">
+					<div class="page-title-heading">
+						<h1><a href="@url" title="@gioiThieu.Title">@gioiThieu.Title</a></h1>
+					</div>
+					<nav class="grb-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="Home">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page"><a href="@url" title="@gioiThieu.Title">@gioiThieu.Title</a></li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="about-details pt-140">
+	<div class="container">
+		<div class="row wow fadeInUp align-items-center">
+			<div class="bms-img mb-30">
+							<a href="@url" title="@gioiThieu.Title"><img style="width: 100%;" src="@gioiThieu.URLImage" alt="@gioiThieu.Title" title="@gioiThieu.Title"></a>
+			</div>
+			<div class="col-lg-12">
+				<div class="about-details-right mb-30">
+					@Html.Raw(gioiThieu.HTMLContent)
+				</div>
+			</div>
+		</div>		
+	</div>
+</section>
+
+<div class="counter-board-area" data-background="assets/img/bg/counter-board-bg.jpg">
+	<div class="container">
+		<div class="row wow fadeInUp counter-board-content">
+			<div class="col-lg-3 col-sm-6">
+				<div class="counter-board-single mb-40">
+					<i class="flaticon-add-group"></i>
+					<div class="counter-board-number"><span class="odometer" data-count="900">00</span>+</div>
+					<p>Khách hàng</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="counter-board-single mb-40">
+					<i class="flaticon-businessman"></i>
+					<div class="counter-board-number"><span class="odometer" data-count="30">00</span>+</div>
+					<p>Nhân viên</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="counter-board-single mb-40">
+					<i class="flaticon-layers"></i>
+					<div class="counter-board-number"><span class="odometer" data-count="3">00</span>+ tỷ</div>
+					<p>Doanh thu tháng</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="counter-board-single mb-40">
+					<i class="flaticon-trophy-1"></i>
+					<div class="counter-board-number"><span class="odometer" data-count="40">00</span>+ tỷ</div>
+					<p>Doanh thu năm</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<section class="team-area grey-bg pt-115 pb-90">
+	<div class="container">
+		<div class="row wow fadeInUp">
+			<div class="col-lg-12">
+				<div class="section-title mb-55 text-center">
+					<div class="border-c-bottom">
+						<p>Đội ngũ kỹ thuật</p>
+					</div>
+					<h2>Chuyên nghiệp và luôn sẵn sàng</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row wow fadeInUp">
+			@{
+				foreach (VNPT2021.Data.Models.Membership item in listNhanVien)
+				{					
+					@Html.Raw(@"<div class='col-lg-3 col-md-6'>");
+					@Html.Raw(@"<div class='team-member mb-30'>");
+
+					@Html.Raw(@"<div class='member-img'>");
+					@Html.Raw(@"<a t href='https://zalo.me/"+item.Phone+"' title='"+item.FullName+"'><img src='"+item.URLImage+"' alt='"+item.FullName+"' title='"+item.FullName+"'></a>");
+					@Html.Raw(@"</div>");
+
+					@Html.Raw(@"<div class='member-name p-relative'>");
+
+					@Html.Raw(@"<div class='member-name-bg'>");
+					@Html.Raw(@"<img src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"assets/img/shape/member-name-bg.png' alt='"+item.FullName+"' title='"+item.FullName+"'>");
+					@Html.Raw(@"<img src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"assets/img/shape/member-name-c-bg.png' alt='"+item.FullName+"' title='"+item.FullName+"'>");
+					@Html.Raw(@"</div>");
+
+					@Html.Raw(@"<h5><a href='https://zalo.me/"+item.Phone+"' title='"+item.FullName+"'>"+item.FullName+"</a></h5>");
+					@Html.Raw(@"<span>"+item.Description+"</span>");
+					@Html.Raw(@"<div class='member-social'>");
+					@Html.Raw(@"<a target='_blank' title='https://zalo.me/"+item.Phone+"' href='https://zalo.me/"+item.Phone+"'><img title='zalo' alt='zalo' src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"images/zalo.png' /></a>");					
+					@Html.Raw(@"</div>");					
+					@Html.Raw(@"</div>");
+					@Html.Raw(@"</div>");
+					@Html.Raw(@"</div>");					
+				}
+			}
+		</div>
+	</div>
+</section>

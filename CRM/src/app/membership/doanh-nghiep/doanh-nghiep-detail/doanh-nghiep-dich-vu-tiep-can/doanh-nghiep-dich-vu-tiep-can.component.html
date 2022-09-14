@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                            <div class="col s12 m9 l9">
+                                <h4 class="card-title"><b>Dịch vụ tiếp cận</b></h4>
+                            </div>
+                            <div class="col s12 m3 l3">
+                                <button type="submit" class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                                        class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                                <a class="mb-6 btn-floating waves-effect waves-light purple lightrn-1"
+                                    (click)="onClose()">
+                                    <i class="material-icons">close</i>
+                                </a>
+                            </div>
+                            <div class="row">
+                                <input name="ID" [(ngModel)]="membershipPropertyService.formData.ID" type="hidden">
+                                <input name="MembershipID" [(ngModel)]="membershipPropertyService.formData.MembershipID"
+                                    type="hidden">
+                                <div class="col s12 m12 l6">
+                                    <div class="input-field">
+                                        <mat-label for="ProductID">Dịch vụ</mat-label>
+                                        <mat-select name="ProductID"
+                                            [(ngModel)]="membershipPropertyService.formData.ProductID"
+                                            (selectionChange)="onChangeProductID($event)">
+                                            <input (keyup)="onFilterProduct($event.target.value)">
+                                            <mat-option *ngFor="let item of listProduct" [value]="item.ID">
+                                                {{item.Title}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+                                    <div class="input-field">
+                                        <mat-label for="GoiCuocID">Gói cước</mat-label>
+                                        <mat-select name="GoiCuocID"
+                                            [(ngModel)]="membershipPropertyService.formData.GoiCuocID">
+                                            <mat-option *ngFor="let item of listGoiCuoc" [value]="item.ID">
+                                                {{item.Title}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+                                    <div class="input-field">
+                                        <mat-label for="NhanVienThucHienID">Nhân viên thực hiện</mat-label>
+                                        <mat-select name="NhanVienThucHienID"
+                                            [(ngModel)]="membershipPropertyService.formData.NhanVienThucHienID">
+                                            <mat-option *ngFor="let item of listNhanVien" [value]="item.ID">
+                                                {{item.FullName}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+
+                                </div>
+                                <div class="col s12 m12 l6">
+                                    <div class="input-field">
+                                        <mat-label for="SoHopDong">Số hợp đồng</mat-label>
+                                        <input name="SoHopDong"
+                                            [(ngModel)]="membershipPropertyService.formData.SoHopDong" type="text">
+                                    </div>
+                                    <div class="input-field">
+                                        <mat-label for="NoiDungLienHe">Nội dung thực hiện</mat-label>
+                                        <input name="NoiDungLienHe"
+                                            [(ngModel)]="membershipPropertyService.formData.NoiDungLienHe" type="text">
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="file" multiple #Files accept="*/*"
+                                            (change)="changeFiles($event.target.files)">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="KhungOverflow">
+                        <mat-table [dataSource]="dataSourceFileDinhKem" matSort>
+                            <ng-container matColumnDef="actions">
+                                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+                                    <div style="padding-top: 5px; width: 200px;">
+                                        <a title="{{element.FileName}}" target="_blank" href="{{element.FileName}}"
+                                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                class="material-icons">get_app</i></a>&nbsp;&nbsp;&nbsp;
+                                        <a title="Xóa" (click)="onDeleteFileDinhKem(element.ID)"
+                                            class="mb-6 btn-floating waves-effect waves-light red accent-2"><i
+                                                class="material-icons">delete_outline</i></a>
+                                    </div>
+                                </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="Title">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>Tiêu đề
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element">{{element.Title}}
+                                </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="loading">
+                                <mat-footer-cell *matFooterCellDef colspan="4">
+                                    Đang tải dữ liệu...
+                                </mat-footer-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="noData">
+                                <mat-footer-cell *matFooterCellDef colspan="4">
+                                    Chưa có dữ liệu.
+                                </mat-footer-cell>
+                            </ng-container>
+                            <mat-header-row *matHeaderRowDef="displayColumnsFileDinhKem"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayColumnsFileDinhKem;"></mat-row>
+                            <mat-footer-row *matFooterRowDef="['loading']"
+                                [ngClass]="{'hide':dataSourceFileDinhKem!=null}">
+                            </mat-footer-row>
+                            <mat-footer-row *matFooterRowDef="['noData']"
+                                [ngClass]="{'hide':!(dataSourceFileDinhKem!=null && dataSourceFileDinhKem.data.length==0)}">
+                            </mat-footer-row>
+                        </mat-table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

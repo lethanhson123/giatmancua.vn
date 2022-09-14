@@ -1,0 +1,471 @@
+﻿@inject VNPT2021.Data.Repositories.IMembershipRepository membershipRepository
+@inject VNPT2021.Data.Repositories.IBlogCategoryRepository blogCategoryRepository
+@inject VNPT2021.Data.Repositories.IBlogRepository blogRepository
+
+@{
+	VNPT2021.Data.Models.Membership vnpt = membershipRepository.GetByVNPTID();
+	List<VNPT2021.Data.Models.BlogCategory> listBlogCategory = blogCategoryRepository.GetByActiveIsTrueToList();
+	List<VNPT2021.Data.Models.Blog> listBlog = blogRepository.GetByParentIDAndActiveToList(VNPT2021.Helpers.AppGlobal.BlogCategoryGioiThieuID, true).OrderBy(model => model.SortOrder).ToList();
+}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KD8302YQXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KD8302YQXL');
+</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+	<meta name="robots" content="index,follow">
+	<meta name="Googlebot" content="index,follow">
+	<meta name="revisit-after" content="1 days">
+
+	<title>@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageTitle</title>
+	<meta name="description" content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageDescription" />
+	<meta name="keywords" content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageKeywords" />
+	<meta name="news_keywords" content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageTags" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-title" content="@VNPT2021.Helpers.AppGlobal.DomainName" />
+	<link rel="icon" type="image/x-icon" href="@VNPT2021.Helpers.AppGlobal.LogoImageURL">
+
+	<link rel="canonical" href="@ViewData["URLCurrent"]" />
+	<meta property="og:site_name" content="@VNPT2021.Helpers.AppGlobal.DomainName" />
+	<meta property="og:rich_attachment" content="true" />
+	<meta property="og:type" content="article" />
+	<meta property="article:publisher" content="@VNPT2021.Helpers.AppGlobal.Facebook" />
+	<meta property="og:url" itemprop="url" content="@ViewData["URLCurrent"]" />
+	<meta property="og:image" itemprop="thumbnailUrl" content="@ViewData["URLImage"]" />
+	<meta property="og:image:width" content="800" />
+	<meta property="og:image:height" content="600" />
+	<meta content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageTitle" property="og:title" itemprop="headline" />
+	<meta content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageDescription" property="og:description" itemprop="description" />
+	<meta content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageKeywords" property="article:tag" />
+	<meta content="news" itemprop="genre" name="medium" />
+	<meta content="EN" itemprop="inLanguage" />
+	<meta content="@ViewData["Title"] -  @VNPT2021.Helpers.AppGlobal.PageTitle" itemprop="articleSection" />
+	<meta content="@ViewData["Title"] -  @VNPT2021.Helpers.AppGlobal.PageTitle" itemprop="sourceOrganization" name="source" />
+	<meta content="2022-01-01T19:22:56+07:00" itemprop="datePublished" name="pubdate" />
+	<meta content="2022-01-01T19:22:56+07:00" itemprop="dateModified" name="lastmod" />
+	<meta content="2022-01-01T19:22:56+07:00" itemprop="dateCreated" />
+	<meta name="copyright" content="@VNPT2021.Helpers.AppGlobal.DomainName" />
+	<meta name="author" content="@VNPT2021.Helpers.AppGlobal.DomainName" />
+
+	<meta name="twitter:card" value="summary" />
+	<meta name="twitter:url" content="@ViewData["URLCurrent"]" />
+	<meta name="twitter:title" content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageTitle" />
+	<meta name="twitter:description" content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageDescription" />
+	<meta name="twitter:image" content="@ViewData["URLImage"]" />
+	<meta name="twitter:site" content="@VNPT2021.Helpers.AppGlobal.Twitter" />
+	<meta name="twitter:creator" content="@VNPT2021.Helpers.AppGlobal.Twitter" />
+
+	<link rel="apple-touch-icon-precomposed" href="@VNPT2021.Helpers.AppGlobal.LogoImageURL" sizes="72x72">
+	<link rel="apple-touch-icon-precomposed" href="@VNPT2021.Helpers.AppGlobal.LogoImageURL" sizes="144x144">
+
+	<link rel="apple-touch-icon-precomposed" href="@VNPT2021.Helpers.AppGlobal.LogoImageURL" sizes="57x57">
+	<link rel="apple-touch-icon-precomposed" href="@VNPT2021.Helpers.AppGlobal.LogoImageURL" sizes="114x114">
+
+	<link rel="nokia-touch-icon" href="@VNPT2021.Helpers.AppGlobal.LogoImageURL">
+
+	<link rel="apple-touch-icon-precomposed" href="@VNPT2021.Helpers.AppGlobal.LogoImageURL" sizes="1x1">
+
+
+	<meta name="its_url" content="@ViewData["URLCurrent"]" />
+	<meta name="its_title" content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageTitle" />
+	<meta name="its_section" content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageDescription" />
+	<meta name="its_subsection" content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageKeywords" />
+	<meta name="its_tag" content="@ViewData["Title"] - @VNPT2021.Helpers.AppGlobal.PageTags" />
+
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/swiper-bundle.css">
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/animate.min.css">
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/custom-animation.css">
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/odometer-theme-default.css">
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/fontawesome-all.min.css">
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/meanmenu.css">
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/flaticon.css">
+	<link rel="stylesheet" href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/css/main.css">
+	<script type="text/javascript">
+			function onTimKiem(domain) {
+				if (event.keyCode == 13)
+				{
+					var searchString = document.getElementById('SearchString').value;
+					var url = domain + "tag/" + searchString;
+					window.location.href = url;
+				}
+			}
+			function onTimKiemMobile(domain) {
+				var searchString = document.getElementById('SearchStringMobile').value;
+				var url = domain + "tag/" + searchString;
+				window.location.href = url;
+			}
+			function onClickSaveNewsletter() {
+				var email = document.getElementById('NewsletterEmail').value;
+			 $.ajax({
+				type: "POST",
+				datatype: "JSON",
+				url: '@Url.Action("SaveNewsletter", "Home")',
+				data: {
+					email: email
+				},
+				success: function (result) {					
+					window.location.href = "/loi-cam-on.html";
+				},
+				error: function (jqXHR, exception) {},
+				complete: function () { },
+			 })
+		}
+	</script>
+</head>
+<body>
+	<header>
+		<div class="header__top d-none d-md-block">
+			<div class="container">
+				<div class="row d-flex align-items-center">
+					<div class="col-lg-9">
+						<div class="grb__cta header-cta">
+							<ul>
+								<li>
+									<div class="cta__icon">
+										<span><i class="fas fa-phone-alt"></i></span>
+									</div>
+									<div class="cta__content">
+										<p>Hotline:</p>
+										<span><a target="_blank" href="tel:@vnpt.Phone">@vnpt.PhoneDisplay</a></span>
+									</div>
+								</li>
+								<li>
+									<div class="cta__icon">
+										<span><i class="fas fa-envelope"></i></span>
+									</div>
+									<div class="cta__content">
+										<p>Email:</p>
+										<span><a target="_blank" title="@vnpt.Email" href='https://mail.google.com/mail/u/0/?view=cm&fs=1&to=@vnpt.Email&su=Hi_@vnpt.Email&body=&tf=1'>@vnpt.Email</a></span>
+									</div>
+								</li>
+								<li>
+									<div class="cta__icon">
+										<span><i class="fas fa-clock"></i></span>
+									</div>
+									<div class="cta__content">
+										<p>Giờ làm việc</p>
+										<span>08:00 đến 17:00</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 d-none d-lg-block">
+						<div class="grb__social f-right st-1">
+							<ul>
+								<li><a target="_blank" title="https://www.facebook.com/@vnpt.Facebook" class="fb" href="https://www.facebook.com/@vnpt.Facebook"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a target="_blank" title="https://www.twitter.com/@vnpt.Twitter" class="twt" href="https://twitter.com/@vnpt.Twitter"><i class="fab fa-twitter"></i></a></li>
+								<li><a target="_blank" title="https://www.instagram.com/@vnpt.Instagram" class="insta" href="https://www.instagram.com/@vnpt.Instagram"><i class="fab fa-instagram"></i></a></li>
+								<li><a target="_blank" title="https://zalo.me/@vnpt.Phone" href="https://zalo.me/@vnpt.Phone"><img title="zalo" alt="zalo" src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/images/zalo.png" /></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header__main header-sticky header-main-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-2 col-lg-3 col-8">
+						<div class="logo">
+							<div class="logo-bg-1">
+								<img src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/img/shape/logo-bg-1.png" alt="@VNPT2021.Helpers.AppGlobal.PageTitle" title="@VNPT2021.Helpers.AppGlobal.PageTitle">
+							</div>
+							<a class="logo-text-white" href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="@VNPT2021.Helpers.AppGlobal.PageTitle"><img src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/images/logo_ngang_250.png" alt="@VNPT2021.Helpers.AppGlobal.PageTitle" title="@VNPT2021.Helpers.AppGlobal.PageTitle"></a>
+							<a class="logo-text-black" href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="@VNPT2021.Helpers.AppGlobal.PageTitle"><img src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/images/logo_ngang_250.png" alt="@VNPT2021.Helpers.AppGlobal.PageTitle" title="@VNPT2021.Helpers.AppGlobal.PageTitle"></a>
+						</div>
+					</div>
+					<div class="col-xl-10 col-lg-9 col-4">
+						<div class="header__menu-area f-right">
+							<div class="menu-bg-1">
+								<img src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/img/shape/menu-bg-1.png" title="@VNPT2021.Helpers.AppGlobal.PageTitle" alt="@VNPT2021.Helpers.AppGlobal.PageTitle">
+							</div>
+							<div class="main-menu main-menu-1">
+								<nav id="mobile-menu">
+									<ul>
+										<li><a href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="Home">Home</a></li>
+										<li><a href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/gioi-thieu.html" title="Giới thiệu">Giới thiệu</a></li>
+										@{
+											foreach (VNPT2021.Data.Models.BlogCategory item in listBlogCategory)
+											{
+												if (item.ID != VNPT2021.Helpers.AppGlobal.BlogCategoryGioiThieuID)
+												{
+													@Html.Raw("<li><a href='"+@VNPT2021.Helpers.AppGlobal.DomainURL + item.Code + "/" + item.URLCode + "-" + item.ID +".html' title='"+ item.Title +"'>"+ item.Title +"</a></li>")
+													;
+												}
+											}
+										}
+										<li><a href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/lien-he.html" title="Liên hệ">Liên hệ</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="header__search">
+								<a class="search-btn nav-search search-trigger d-none d-sm-inline-block" href="#">
+									<i class="fal fa-search"></i>
+								</a>
+								<a class="side-toggle d-lg-none" href="javascript:void(0)">
+									<i class="fal fa-bars"></i>
+								</a>
+							</div>
+							<div class="header__btn d-none d-xl-inline-block">
+								<a target="_blank" href="https://www.google.com/maps/place/@vnpt.Address" class="grb-btn">
+									Bản đồ<i class="fas fa-arrow-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="fix">
+		<div class="side-info">
+			<div class="side-info-content">
+				<div class="offset-widget offset-logo mb-30 pb-20">
+					<div class="row align-items-center">
+						<div class="col-9">
+							<a href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="@VNPT2021.Helpers.AppGlobal.PageTitle"><img src="@VNPT2021.Helpers.AppGlobal.Logo200ImageURL" title="@VNPT2021.Helpers.AppGlobal.PageTitle" alt="@VNPT2021.Helpers.AppGlobal.PageTitle"></a>
+						</div>
+						<div class="col-3 text-end">
+							<button class="side-info-close">
+								<i class="fal fa-times"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="mobile-menu d-lg-none"></div>
+				<div class="offset-widget offset_searchbar mb-30">
+					<div class="offset_search_content">
+						<input id="SearchStringMobile" type="search" placeholder="Bạn tìm gì...">
+						<button type="submit" class="offset_search_button" onclick="onTimKiemMobile('@VNPT2021.Helpers.AppGlobal.DomainURL')"><i onclick="onTimKiemMobile('@VNPT2021.Helpers.AppGlobal.DomainURL')" class="fal fa-search"></i></button>
+					</div>
+				</div>
+
+				<div class="side-map mt-20 mb-30 d-none d-lg-block">
+					<iframe src="https://www.google.com/maps/d/embed?mid=@vnpt.GoogleMap"></iframe>
+				</div>
+
+				<div class="contact-infos mt-30 mb-30">
+					<div class="contact-list mb-30">
+						<h4>Liên hệ với chúng tôi</h4>
+						<a target="_blank" href="https://www.google.com/maps/place/@vnpt.Address">
+							<i class="fal fa-map-marker-alt"></i>
+							<span>
+								Số 17 Mai Chí Thọ, phường Bình Khánh,<br>
+								quận 02, thành phố Hồ Chí Minh
+							</span>
+						</a>
+						<a target="_blank" href="tel:@vnpt.Phone" title="@vnpt.PhoneDisplay">
+							<i class="fal fa-phone"></i>
+							<span>@vnpt.PhoneDisplay</span>
+						</a>
+						<a target="_blank" title="@vnpt.Email" href='https://mail.google.com/mail/u/0/?view=cm&fs=1&to=@vnpt.Email&su=Hi_@vnpt.Email&body=&tf=1'>
+							<i class="far fa-envelope"></i>
+							<span>@vnpt.Email</span>
+						</a>
+
+					</div>
+					<div class="grb__social footer-social offset-social">
+						<ul>
+							<li><a target="_blank" href="https://www.facebook.com/@vnpt.Facebook"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a target="_blank" title="https://www.twitter.com/@vnpt.Twitter" class="twt" href="https://twitter.com/@vnpt.Twitter"><i class="fab fa-twitter"></i></a></li>
+							<li><a target="_blank" title="https://www.instagram.com/@vnpt.Instagram" class="insta" href="https://www.instagram.com/@vnpt.Instagram"><i class="fab fa-instagram"></i></a></li>
+							<li><a target="_blank" title="https://zalo.me/@vnpt.Phone" href="https://zalo.me/@vnpt.Phone"><img title="zalo" alt="zalo" src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/images/zalo.png" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="offcanvas-overlay"></div>
+	<div class="search-wrap">
+		<div class="search-inner">
+			<i class="fal fa-times search-close" id="search-close"></i>
+			<div class="search-cell">
+				<div class="search-field-holder">
+					<input id="SearchString" type="search" class="main-search-input" placeholder="Bạn muốn tìm gì..." onkeydown="onTimKiem('@VNPT2021.Helpers.AppGlobal.DomainURL')">
+				</div>
+			</div>
+		</div>
+	</div>
+	<main>
+		@RenderBody()
+		<div class="newsletter-area">
+			<div class="container">
+				<div class="row wow fadeInUp align-items-center">
+					<div class="col-lg-6">
+						<div class="newsletter-text mb-30">
+							<h4>Đăng ký để nhận bản tin</h4>
+							<p>
+								Đăng ký để nhận thông tin mới nhất từ chúng tôi
+							</p>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<form id="formNewsletter">
+							<div class="subscribe-form mb-30">
+								<input id="NewsletterEmail" type="text" placeholder="Nhập email của bạn...">								
+								<button type="button" onclick='onClickSaveNewsletter()'><i class="fas fa-paper-plane"></i>Đồng ý</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<section class="footer-area pt-80 pb-40">
+			<div class="container">
+				<div class="row wow fadeInUp">
+					<div class="col-lg-4 col-md-6">
+						<div class="footer-widget mb-40">
+							<div class="question-area">
+								<div class="question-icon">
+									<i class="flaticon-support"></i>
+								</div>
+								<div class="question-text">
+									<p>Có một câu hỏi? Gọi cho chúng tôi 24/7</p>
+									<span><a target="_blank" href="tel:@vnpt.Phone">@vnpt.PhoneDisplay</a></span>
+								</div>
+							</div>
+							<div class="footer-address">
+								<h5>Địa chỉ</h5>
+								<p><a target="_blank" href="https://www.google.com/maps/place/@vnpt.Address">@vnpt.Address</a></p>
+							</div>
+							<div class="grb__social footer-social">
+								<ul>
+									<li><a target="_blank" href="https://www.facebook.com/@vnpt.Facebook" title="https://www.facebook.com/@vnpt.Facebook"><i class="fab fa-facebook-f"></i></a></li>
+									<li><a target="_blank" href="https://www.twitter.com/@vnpt.Twitter" title="https://www.twitter.com/@vnpt.Twitter"><i class="fab fa-twitter"></i></a></li>
+									<li><a target="_blank" href="https://www.instagram.com/@vnpt.Instagram" title="https://www.instagram.com/@vnpt.Instagram"><i class="fab fa-instagram"></i></a></li>
+									<li><a target="_blank" title="https://zalo.me/@vnpt.Phone" href="https://zalo.me/@vnpt.Phone"><img title="zalo" alt="zalo" src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/images/zalo.png" /></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="footer-widget mb-40 cat-m">
+							<div class="footer-widget-title">
+								<h4>Danh mục</h4>
+							</div>
+							<ul class="footer-list">
+								@{
+									foreach (VNPT2021.Data.Models.BlogCategory item in listBlogCategory)
+									{
+										@Html.Raw("<li><a href='"+@VNPT2021.Helpers.AppGlobal.DomainURL + item.Code + "/" + item.URLCode + "-" + item.ID + ".html' title='"+ item.Title +"'>"+ item.Title +"</a></li>")
+										;
+									}
+								}
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="footer-widget mb-40">
+							<div class="footer-widget-title">
+								<h4>Giới thiệu</h4>
+							</div>
+							<ul class="footer-list">
+								@{
+									foreach (VNPT2021.Data.Models.Blog item in listBlog)
+									{
+										@Html.Raw("<li><a href='"+@VNPT2021.Helpers.AppGlobal.DomainURL + item.Code + "/" + item.URLCode + "-" + item.ID +".html' title='"+ item.Title +"'>"+ item.Title +"</a></li>")
+										;
+									}
+								}
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6">
+						<div class="footer-widget mb-40 srv-m">
+							<div class="footer-widget-title">
+								<h4>Giờ làm việc</h4>
+							</div>
+							<ul class="worktime-list">
+								<li>
+									<h5>Thứ hai đến thứ sáu</h5>
+									<span>08:00 - 17:00 </span>
+								</li>
+								<li>
+									<h5>Trực tuyến</h5>
+									<span>24/7</span>
+								</li>
+								<li>
+									<h5>Chủ nhật : <span>Nghỉ</span></h5>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="copyright-area">
+			<div class="container">
+				<div class="row wow fadeInUp align-items-center">
+					<div class="col-lg-3 d-none d-lg-block">
+						<div class="copyright-logo logo-shape">
+							<a href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="@VNPT2021.Helpers.AppGlobal.PageTitle">
+								<img src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/images/logo_ngang_250_white.png" title="@VNPT2021.Helpers.AppGlobal.PageTitle" alt="@VNPT2021.Helpers.AppGlobal.PageTitle">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="copyright-text">
+							<p>Bản quyền thuộc về <a href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="@VNPT2021.Helpers.AppGlobal.PageTitle">Trần gia</a> | Bảo lưu tất cả các quyền</p>
+						</div>
+					</div>
+					<div class="col-lg-5 col-md-6">
+						<ul class="copyright-list f-right">							
+							<li><a href="@VNPT2021.Helpers.AppGlobal.DomainURLSub/lien-he.html" title="Liên hệ">Liên hệ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<div style="position:fixed; bottom:70px; left:20px; z-index:1000;">
+		<div>
+			<a href="https://zalo.me/@vnpt.Phone" target="_blank">
+				<img src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/images/zalo.png" width="50px" height="50px" />
+			</a>
+		</div>
+		<div>
+			<a href="https://m.me/vesinhtrangia24h" target="_blank">
+				<img src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/images/messenger.png" width="50px" height="50px" />
+			</a>
+		</div>
+		<div>
+			<a href="tel:@vnpt.Phone" target="_blank">
+				<img src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/images/phone.png" width="50px" height="50px" />
+			</a>
+		</div>
+	</div>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/vendor/jquery-1.12.4.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/swiper-bundle.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/isotope.pkgd.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/jquery.meanmenu.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/ajax-form.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/wow.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/jquery.scrollUp.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/odometer.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/appair.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/imagesloaded.pkgd.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/plugins.js"></script>
+	<script src="@VNPT2021.Helpers.AppGlobal.DomainURLSub/assets/js/main.js"></script>
+</body>
+</html>

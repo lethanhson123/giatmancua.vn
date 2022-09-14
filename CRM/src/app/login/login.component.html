@@ -1,0 +1,36 @@
+<div id="login-page" class="row"
+    style="background-image: url('http://erp.vnptvungtau.vn/app-assets/images/gallery/flat-bg.jpg'); background-repeat: no-repeat; -webkit-background-size: cover; background-size: cover;">
+    <div class="col s10 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
+        <form class="login-form">
+            <div class="row">
+                <div class="input-field col s12" style="text-align: center;">
+                    <img alt="{{pageTitle}}" title="{{pageTitle}}" class="responsive-img" width="50%" src="{{logoURL}}" />
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix pt-2">person_outline</i>
+                    <input autofocus cdkFocusInitial placeholder="Điện thoại" name="Phone" [(ngModel)]="account">                                     
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix pt-2">lock_outline</i>                    
+                    <input placeholder="Mật khẩu" name="Password" [(ngModel)]="password" type="password">                                        
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button (click)="onLogin()" [disabled]="account === '' || password === ''" class="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12">Đăng
+                        nhập</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <p class="margin medium-small">Hỗ trợ: Viết Dũng <a href="tel:0941869986" title="0941 86 99 86">0941
+                            86 99 86</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

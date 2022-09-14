@@ -1,0 +1,127 @@
+<style>
+    .mat-column-ProductCount { 
+        flex: none;     
+        width: 100px;        
+    }
+    .mat-column-Total {      
+        flex: none;
+        width: 120px;        
+        padding-right: 20px;    
+    }
+    .mat-column-Address {     
+        flex: none; 
+        width: 1000px;    
+        
+    }
+</style>
+
+<div class="section section-data-tables">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="col s12 m12 l8">
+                        <h3 class="card-title"><b>Doanh thu mới</b></h3>
+                    </div>
+                    <div class="col s12 m12 l1">
+                        <mat-select name="year" [(value)]="year" (selectionChange)="onChangeYear($event)">
+                            <mat-option *ngFor="let item of listYear" [value]="item.Display">
+                                {{item.Display}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col s12 m12 l1">
+                        <mat-select name="month" [(ngModel)]="month" (selectionChange)="onChangeMonth($event)">
+                            <mat-option *ngFor="let item of listMonth" [value]="item.Display">
+                                {{item.Display}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col s12 m12 l2">                       
+                        <button title="Download excel" (click)="onDownloadExcelFile()"
+                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                class="material-icons">get_app</i></button>&nbsp;&nbsp;&nbsp;
+                        <button title="In biểu mẫu" (click)="onPrint()"
+                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                class="material-icons">print</i></button>&nbsp;&nbsp;&nbsp;                        
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="KhungOverflow">
+                                <mat-table [dataSource]="dataSourceDashboard" matSort>
+                                    <ng-container matColumnDef="STT">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>STT
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element; let i = index">
+                                            <div style="width:50px; text-align: center;">
+                                                {{i + 1}}
+                                            </div>
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="TaxCode">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>Mã số thuế
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element">
+                                            <div style="width:120px;">
+                                                <a title="{{element.TaxCode}}}" target="_blank"
+                                                    routerLink="{{detailURL}}/{{element.ID}}">{{element.TaxCode}}</a>
+                                            </div>
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="FullName">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>Khách hàng
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element">
+                                            <div style="width:300px;">
+                                                <a title="{{element.FullName}}}" target="_blank"
+                                                    routerLink="{{detailURL}}/{{element.ID}}">{{element.FullName}}</a>
+                                            </div>
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="CityName">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>Khu vực
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element">
+                                            <div style="width:200px;">
+                                                {{element.CityName}}
+                                            </div>
+                                        </mat-cell>
+                                    </ng-container>                                   
+                                    <ng-container matColumnDef="Total">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>Doanh thu
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element">
+                                            <div style="width:120px; text-align: right;">
+                                                {{element.Total | currency:'VND':''}}
+                                            </div>
+                                        </mat-cell>
+                                    </ng-container>                                   
+                                    <ng-container matColumnDef="loading">
+                                        <mat-footer-cell *matFooterCellDef colspan="4">
+                                            Đang tải dữ liệu...
+                                        </mat-footer-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="noData">
+                                        <mat-footer-cell *matFooterCellDef colspan="4">
+                                            Chưa có dữ liệu.
+                                        </mat-footer-cell>
+                                    </ng-container>
+                                    <mat-header-row *matHeaderRowDef="displayColumnsDashboard"></mat-header-row>
+                                    <mat-row *matRowDef="let row; columns: displayColumnsDashboard;"></mat-row>
+                                    <mat-footer-row *matFooterRowDef="['loading']"
+                                        [ngClass]="{'hide':dataSourceDashboard!=null}"></mat-footer-row>
+                                    <mat-footer-row *matFooterRowDef="['noData']"
+                                        [ngClass]="{'hide':!(dataSourceDashboard!=null && dataSourceDashboard.data.length==0)}">
+                                    </mat-footer-row>
+                                </mat-table>
+                                <mat-paginator [pageSizeOptions]="[10,20,50,100]" [pageSize]="10"
+                                    [showFirstLastButtons]></mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isShowLoading"></app-loading>

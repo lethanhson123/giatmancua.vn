@@ -1,0 +1,280 @@
+<div class="row">
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                            <div class="card card card-default scrollspy">
+                                <div class="card-content">
+                                    <div class="col s12 m12 l9">
+                                        <h3 class="card-title"><b>{{aM_PhieuYeuCauService.formDataViewModel.TieuDe}} -
+                                                Chi
+                                                tiết</b>
+                                        </h3>
+                                    </div>
+                                    <div class="col s12 m12 l3">
+                                        <a title="Danh sách" routerLink="{{listURL}}"
+                                            class="mb-6 btn-floating waves-effect waves-light amber darken-4 mr-1 mb-1"><i
+                                                class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                        <button title="Lưu thay đổi"
+                                            class="mb-6 btn-floating waves-effect waves-light cyan mr-1 mb-1"><i
+                                                class="material-icons">save</i></button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Mã số thuế" name="TaxCode" (keyup)="onKeyUpTaxCode($event)"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.TaxCode"
+                                                    type="text">
+                                                <label for="TaxCode">Mã số thuế</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Liên hệ" name="ContactFullName"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.ContactFullName"
+                                                    type="text">
+                                                <label for="ContactFullName">Liên hệ</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="CategoryID">Ngành nghề</mat-label>
+                                                <mat-select name="CategoryID"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.CategoryID">
+                                                    <mat-option *ngFor="let item of listCustomerType" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l8">
+                                            <div class="input-field">
+                                                <input placeholder="Khách hàng" name="FullName"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.FullName"
+                                                    type="text">
+                                                <label for="FullName">Khách hàng</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="NganHangID">Ngân hàng</mat-label>
+                                                <mat-select name="NganHangID"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.NganHangID">
+                                                    <mat-option *ngFor="let item of listNganHang" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Mã khách hàng" name="MembershipCode"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.MembershipCode"
+                                                    type="text">
+                                                <label for="MembershipCode">Mã khách hàng</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Điện thoại liên hệ" name="ContactPhone"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.ContactPhone"
+                                                    type="text">
+                                                <label for="ContactPhone">Điện thoại liên hệ</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="WardID">Xã</mat-label>
+                                                <mat-select name="WardID"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.WardID">
+                                                    <mat-option *ngFor="let item of listWard" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Điện thoại" name="Phone"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.Phone"
+                                                    type="text">
+                                                <label for="Phone">Điện thoại</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Email" name="Email"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.Email"
+                                                    type="text">
+                                                <label for="Email">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="CityID">Huyện</mat-label>
+                                                <mat-select name="CityID"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.CityID">
+                                                    <mat-option *ngFor="let item of listCity" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Địa chỉ" name="Address"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.Address"
+                                                    type="text">
+                                                <label for="Address">Địa chỉ</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Tài khoản ngân hàng" name="NganHang_SoTaiKhoan"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.NganHang_SoTaiKhoan"
+                                                    type="text">
+                                                <label for="NganHang_SoTaiKhoan">Tài khoản ngân hàng</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="ProvinceID">Tỉnh</mat-label>
+                                                <mat-select name="ProvinceID"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.ProvinceID">
+                                                    <mat-option *ngFor="let item of listProvince" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <h1>Phiếu yêu cầu AM</h1>
+                                    <div class="row">
+                                        <input name="ID" [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.ID"
+                                            type="hidden">
+                                        <input name="KhachHangID"
+                                            [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.KhachHangID"
+                                            type="hidden">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Yêu cầu" name="TieuDe"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.TieuDe"
+                                                    type="text">
+                                                <label for="TieuDe">Yêu cầu</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="MauHoaDonID">Mẫu hóa đơn</mat-label>
+                                                <mat-select name="MauHoaDonID"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.MauHoaDonID">
+                                                    <mat-option *ngFor="let item of listAMMauHoaDon" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="NgonNguID">Ngôn ngữ</mat-label>
+                                                <mat-select name="NgonNguID"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.NgonNguID">
+                                                    <mat-option *ngFor="let item of listAmNgonNgu" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Số lượng hóa đơn" name="SoLuongHoaDon"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.SoLuongHoaDon"
+                                                    type="text">
+                                                <label for="SoLuongHoaDon">Số lượng hóa đơn</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="MauSoID">Mẫu số</mat-label>
+                                                <mat-select name="MauSoID"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.MauSoID">
+                                                    <mat-option *ngFor="let item of listAMMauSo" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <input type="file" multiple #Files accept="*/*"
+                                                (change)="changeFiles($event.target.files)">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <input placeholder="Ký hiệu" name="KyHieu"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.KyHieu"
+                                                    type="text">
+                                                <label for="KyHieu">Ký hiệu</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                            <div class="input-field">
+                                                <mat-label for="HeThongID">Hệ thống</mat-label>
+                                                <mat-select name="HeThongID"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.HeThongID">
+                                                    <mat-option *ngFor="let item of listAMHeThong" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l4">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l12">
+                                            <div class="input-field">
+                                                <label>File đính kèm</label>
+                                                <br />
+                                                <ul>
+                                                    <li *ngFor="let item of listAM_PhieuYeuCau_ThuocTinh">
+                                                        <a title="{{item.URL}}}" target="_blank"
+                                                            href="{{item.URL}}">{{item.Title}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l12">
+                                            <div class="input-field">
+                                                <textarea style="width: 100%; height: 200px;" placeholder="Nội dung"
+                                                    name="NoiDung"
+                                                    [(ngModel)]="aM_PhieuYeuCauService.formDataViewModel.NoiDung"></textarea>
+                                                <label for="NoiDung">Nội dung</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                            <div class="col s12 m12 l9">
+                                <h2 class="card-title"><b>Phân quyền menu - Chi tiết</b></h2>
+                            </div>
+                            <div class="col s12 m12 l3">
+                                <button type="submit" class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                                        class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                                <a class="mb-6 btn-floating waves-effect waves-light purple lightrn-1"
+                                    (click)="onClose()">
+                                    <i class="material-icons">close</i>
+                                </a>
+                            </div>
+                            <div class="row">
+                                <input name="ID" [(ngModel)]="membershipPropertyService.formData.ID" type="hidden">
+                                <input name="MenuID" [(ngModel)]="membershipPropertyService.formData.MenuID" type="hidden">
+                                <div class="col s12">
+                                    <div class="input-field col s12 m12 l4">
+                                        <label>
+                                            <input cdkFocusInitial name="IsAllow"
+                                                [(ngModel)]="membershipPropertyService.formData.IsAllow"
+                                                type="checkbox" />
+                                            <span>Allow</span>
+                                        </label>
+                                    </div>
+                                    <div class="input-field col s12 m12 l4">
+                                        <label>{{membershipPropertyService.formData.ParentName}}</label>                                        
+                                    </div>
+                                    <div class="input-field col s12 m12 l4">
+                                        <label>{{membershipPropertyService.formData.MenuName}}</label>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

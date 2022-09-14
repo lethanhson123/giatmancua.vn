@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="col s12">
+    <div class="container">
+      <div class="section section-data-tables">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+              <div class="col s12 m10 l10">
+                <h3 class="card-title"><b>Người liên hệ</b></h3>
+              </div>
+              <div class="col s12 m2 l2">
+                <button type="submit" class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                    class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                <a class="mb-6 btn-floating waves-effect waves-light purple lightrn-1" (click)="onClose()">
+                  <i class="material-icons">close</i>
+                </a>
+              </div>
+              <div class="row">
+                <input name="ID" [(ngModel)]="membershipPropertyService.formData.ID" type="hidden">
+                <input name="MembershipID" [(ngModel)]="membershipPropertyService.formData.MembershipID" type="hidden">
+
+                <div class="col s12 m12 l6">
+                  <div class="input-field">
+                    <mat-label for="ChucVuID">Chức vụ</mat-label>
+                    <mat-select name="ChucVuID" [(ngModel)]="membershipPropertyService.formData.ChucVuID">                     
+                      <mat-option *ngFor="let item of listChucVu" [value]="item.ID">
+                        {{item.Title}}
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="input-field">
+                    <input cdkFocusInitial name="FullName" [(ngModel)]="membershipPropertyService.formData.FullName"
+                      type="text">
+                    <label>Họ tên</label>
+                  </div>
+                  <div class="input-field">
+                    <input cdkFocusInitial name="Phone" [(ngModel)]="membershipPropertyService.formData.Phone"
+                      type="text">
+                    <label>Điện thoại</label>
+                  </div>
+                  <div class="input-field">
+                    <input cdkFocusInitial name="Email" [(ngModel)]="membershipPropertyService.formData.Email"
+                      type="text">
+                    <label>Email</label>
+                  </div>
+                  <div class="input-field">
+                    <div class="input-field col s12 m12 l6">
+                      <mat-label>Ngày sinh</mat-label>
+                      <mat-datepicker-toggle matSuffix [for]="NgaySinh"></mat-datepicker-toggle>
+                      <mat-datepicker #NgaySinh></mat-datepicker>
+                    </div>
+                    <div class="input-field col s12 m12 l6">
+                      <input [matDatepicker]="NgaySinh" name="NgaySinh"
+                        [(ngModel)]="membershipPropertyService.formData.NgaySinh">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col s12 m12 l6">
+                  <div class="input-field" style="margin-bottom: 76px;">
+                    <div class="col s12 m12 l6">
+                      <label>
+                        <input cdkFocusInitial name="GioiTinh" [(ngModel)]="membershipPropertyService.formData.GioiTinh"
+                          type="checkbox" />
+                        <span>Nam/Nữ</span>
+                      </label>
+                    </div>
+                    <div class="col s12 m12 l6">
+                      <label>
+                        <input cdkFocusInitial name="Active" [(ngModel)]="membershipPropertyService.formData.Active"
+                          type="checkbox" />
+                        <span>Người đại diện</span>
+                      </label>
+                    </div>         
+                  </div>                  
+                  <div class="input-field">
+                    <input cdkFocusInitial name="CCCD" [(ngModel)]="membershipPropertyService.formData.CCCD"
+                      type="text">
+                    <label>CCCD/CMND/Hộ chiếu</label>
+                  </div>
+                  <div class="input-field">
+                    <input cdkFocusInitial name="CCCD_NoiCap"
+                      [(ngModel)]="membershipPropertyService.formData.CCCD_NoiCap" type="text">
+                    <label>Nơi cấp</label>
+                  </div>
+                  <div class="input-field">
+                    <input cdkFocusInitial name="GiayUyQuyen"
+                      [(ngModel)]="membershipPropertyService.formData.GiayUyQuyen" type="text">
+                    <label>Theo giấy ủy quyền số</label>
+                  </div>
+                  <div class="input-field">
+                    <div class="col s12 m12 l6">
+                      <mat-label>Ngày cấp</mat-label>
+                      <mat-datepicker-toggle matSuffix [for]="CCCD_NgayCap"></mat-datepicker-toggle>
+                      <mat-datepicker #CCCD_NgayCap></mat-datepicker>
+                    </div>
+                    <div class="col s12 m12 l6">
+                      <input [matDatepicker]="CCCD_NgayCap" name="CCCD_NgayCap"
+                        [(ngModel)]="membershipPropertyService.formData.CCCD_NgayCap">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

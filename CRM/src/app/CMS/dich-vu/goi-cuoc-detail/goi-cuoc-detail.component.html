@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col s12">
+    <div class="container">
+      <div class="section section-data-tables">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+              <div class="col s12 m9 l9">
+                <h5 class="card-title"><b>{{configService.formDataSub.Title}} - Chi tiết</b></h5>
+              </div>
+              <div class="col s12 m3 l3">
+                <button type="submit" class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                    class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                <a class="mb-6 btn-floating waves-effect waves-light purple lightrn-1" (click)="onClose()">
+                  <i class="material-icons">close</i>
+                </a>
+              </div>
+              <div class="row">
+                <input name="ID" [(ngModel)]="configService.formDataSub.ID" type="hidden">
+                <input name="ParentID" [(ngModel)]="configService.formDataSub.ParentID" type="hidden">
+                <div class="row">
+                  <div class="col s12 m12 l6">
+                    <div class="input-field">
+                      <input autofocus cdkFocusInitial placeholder="Dịch vụ" name="Title"
+                        [(ngModel)]="configService.formDataSub.Title" type="text">
+                      <label for="Title">Dịch vụ</label>
+                    </div>
+                  </div>
+                  <div class="col s12 m12 l6">
+                    <div class="input-field">
+                      <p>
+                        <label>
+                          <input type="checkbox" class="filled-in" name="IsWebsite"
+                            [(ngModel)]="configService.formDataSub.IsWebsite" />
+                          <span>Website</span>
+                        </label>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 m12 l6">
+                    <div class="input-field">
+                      <input autofocus cdkFocusInitial placeholder="Giá cước" name="GiaCuoc"
+                        [(ngModel)]="configService.formDataSub.GiaCuoc" type="number">
+                      <label for="GiaCuoc">Giá cước</label>
+                    </div>
+                  </div>
+                  <div class="col s12 m12 l6">
+                    <div class="input-field">
+                      <input autofocus cdkFocusInitial placeholder="Giá cước" name="Token"
+                        [(ngModel)]="configService.formDataSub.Token" type="number">
+                      <label for="Token">Token</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 m12 l12">                   
+                      <ck-editor [config]="{'height': 200}" name="Description" [(ngModel)]="configService.formDataSub.Description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

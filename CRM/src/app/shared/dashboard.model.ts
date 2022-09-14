@@ -1,0 +1,35 @@
+export class Dashboard {    
+    Year?: number;
+    Month?: number;
+    YearSum?: number;
+    YearSumM?: number;
+    MonthSum?: number;
+    MonthSumM?: number;
+    YearPercent?: number;
+    MonthPercent?: number;
+    Thang01?: number;
+    Thang02?: number;
+    Thang03?: number;
+    Thang04?: number;
+    Thang05?: number;
+    Thang06?: number;
+    Thang07?: number;
+    Thang08?: number;
+    Thang09?: number;
+    Thang10?: number;
+    Thang11?: number;
+    Thang12?: number;
+    CityName?: string;
+    KhachHangTongCong?: number;
+    DoanhNghiepTongCong?: number;
+    DoanhThuNamTongCong?: number;
+    DoanhThuThangTongCong?: number;
+    ID?: number;
+    ProductCount?: number;
+    Total?: number;   
+    FullName?: string;
+    TaxCode?: string;
+    Address?: string;
+    ProductCode?: string;
+    PaymentCode?: string;
+}

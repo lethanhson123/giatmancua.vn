@@ -1,0 +1,231 @@
+<style>
+    .mat-column-actions {
+        flex: none;
+        width: 150px;
+        font-size: 12px;
+        color: #000000;
+    }
+    .mat-column-FullName {
+        flex: none;
+        width: 500px;
+        font-size: 12px;
+        color: #000000;
+    }
+    .mat-column-STT {
+        flex: none;
+        width: 50px;
+        font-size: 12px;
+        color: #000000;
+    }
+
+   
+</style>
+
+<div class="row">
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                            <div class="card card card-default scrollspy">
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col s12 m12 l9">
+                                            <h5 class="card-title"><b>Giao việc - Chi tiết</b></h5>
+                                        </div>
+                                        <div class="col s12 m12 l3">                                            
+                                            <a title="Thêm mới" routerLink="{{detailURL}}/0"
+                                                class="mb-6 btn-floating waves-effect waves-light green darken-1 mr-1 mb-1"><i
+                                                    class="material-icons">add</i></a>&nbsp;&nbsp;&nbsp;
+                                            <button title="In biểu mẫu" (click)="onPrint()"
+                                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                        class="material-icons">print</i></button>&nbsp;&nbsp;&nbsp;
+                                            <button title="Lưu thay đổi"
+                                                class="mb-6 btn-floating waves-effect waves-light cyan mr-1 mb-1"><i
+                                                    class="material-icons">save</i></button>
+                                        </div>
+                                    </div>                                   
+                                    <div class="row">
+                                        <div class="col s12 m12 l6">
+                                            <div class="input-field">
+                                                <div class="input-field col s12 m12 l6">
+                                                    <mat-label>Bắt đầu</mat-label>
+                                                    <mat-datepicker-toggle matSuffix [for]="DateBegin"></mat-datepicker-toggle>
+                                                    <mat-datepicker #DateBegin></mat-datepicker>
+                                                </div>
+                                                <div class="input-field col s12 m12 l6">
+                                                    <input [matDatepicker]="DateBegin" name="DateBegin"
+                                                      [(ngModel)]="workListService.formData.DateBegin">
+                                                </div>                                               
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l6">
+                                            <div class="input-field">
+                                                <div class="input-field col s12 m12 l6">
+                                                    <mat-label>Kết thúc</mat-label>
+                                                    <mat-datepicker-toggle matSuffix [for]="DateEnd"></mat-datepicker-toggle>
+                                                    <mat-datepicker #DateEnd></mat-datepicker>
+                                                </div>
+                                                <div class="input-field col s12 m12 l6">
+                                                    <input [matDatepicker]="DateEnd" name="DateEnd"
+                                                      [(ngModel)]="workListService.formData.DateEnd">
+                                                </div>                                                   
+                                            </div>
+                                        </div>                                        
+                                    </div>        
+                                    <div class="row">
+                                        <div class="col s12 m12 l6">
+                                            <div class="input-field">        
+                                                <mat-label for="MembershipID">Nhân viên</mat-label>
+                                                <mat-select name="MembershipID" style="height: 45px; padding-top: 10px;"
+                                                    [(ngModel)]="workListService.formData.MembershipID">
+                                                    <mat-option *ngFor="let item of membershipService.list" [value]="item.ID">
+                                                        {{item.FullName}}
+                                                    </mat-option>
+                                                </mat-select>                                       
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l6">
+                                            <div class="input-field">   
+                                                <mat-label for="ProductID">Dịch vụ</mat-label>
+                                                <mat-select name="ProductID" style="height: 45px; padding-top: 10px;"
+                                                    [(ngModel)]="workListService.formData.ProductID">
+                                                    <mat-option *ngFor="let item of configService.list" [value]="item.ID">
+                                                        {{item.Title}}
+                                                    </mat-option>
+                                                </mat-select>                                                    
+                                            </div>
+                                        </div>                                        
+                                    </div>   
+                                    <div class="row">
+                                        <input name="ID" [(ngModel)]="workListService.formData.ID" type="hidden">                                        
+                                        <input name="DateCreated" [(ngModel)]="workListService.formData.DateCreated" type="hidden">                                        
+                                        <input name="DateUpdated" [(ngModel)]="workListService.formData.DateUpdated" type="hidden">                             
+                                        <div class="col s12 m12 l12">
+                                            <div class="input-field">
+                                                <input autofocus cdkFocusInitial placeholder="Công việc"
+                                                    name="Description" [(ngModel)]="workListService.formData.Description"
+                                                    type="text">
+                                                <label for="FullName">Công việc</label>
+                                            </div>
+                                        </div>
+                                    </div>                               
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="section section-data-tables">
+            <div class="card card card-default scrollspy">
+                <div class="card-content">
+                    <div class="col s12 m12 l3">
+                        <mat-select name="cityID" [(value)]="cityID" style="height: 45px; padding-top: 10px;"
+                            (selectionChange)="onChangeCity($event)">
+                            <mat-option [value]="0">
+                                {{provinceTitle}}
+                            </mat-option>
+                            <mat-option *ngFor="let item of listCity" [value]="item.ID">
+                                {{item.Title}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col s12 m12 l3">
+                        <mat-select name="wardID" [(value)]="wardID" style="height: 45px; padding-top: 10px;">
+                            <mat-option [value]="0">
+                                Xã
+                            </mat-option>
+                            <mat-option *ngFor="let item of listWard" [value]="item.ID">
+                                {{item.Title}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col s12 m12 l3">
+                        <input matInput [(ngModel)]="taxCode" placeholder="Mã số thuế"
+                        autocomplete="off">
+                    </div>             
+                    <div class="col s12 m12 l3">
+                        <button title="Lưu thay đổi" (click)="onInsertByProvinceIDAndCityIDAndWardIDAndTaxCode()"
+                        class="mb-6 btn-floating waves-effect waves-light cyan mr-1 mb-1"><i
+                            class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;({{workListMembershipService.list.length}} doanh nghiệp)
+                    </div>             
+                    <div class="row">
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSource" matSort>    
+                                <ng-container matColumnDef="STT">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>STT
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element; let i = index">{{i +1 }}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="TaxCode">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Mã số thuế
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"><b>{{element.TaxCode}}</b>
+                                    </mat-cell>
+                                </ng-container>                                  
+                                <ng-container matColumnDef="FullName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Doanh nghiệp
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.FullName}}
+                                    </mat-cell>
+                                </ng-container>                                
+                                <ng-container matColumnDef="Phone">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Điện thoại
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.Phone}}
+                                    </mat-cell>
+                                </ng-container>                                                                    
+                                <ng-container matColumnDef="Address">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Địa chỉ
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">{{element.Address}}
+                                    </mat-cell>
+                                </ng-container>                    
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="padding-top: 5px; width: 200px;">          
+                                            <a title="{{element.FullName}}}" target="_blank"
+                                            routerLink="{{doanhNghiepDetailURL}}/{{element.MembershipID}}"
+                                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                class="material-icons">info</i></a>&nbsp;&nbsp;&nbsp;                                 
+                                            <a title="Xóa" (click)="onDeleteWorkListMembership(element.ID)"
+                                                class="mb-6 btn-floating waves-effect waves-light red accent-2"><i
+                                                    class="material-icons">delete_outline</i></a>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']"
+                                    [ngClass]="{'hide':dataSource!=null}">
+                                </mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSource!=null && dataSource.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isShowLoading"></app-loading>

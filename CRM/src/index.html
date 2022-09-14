@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+  <meta name="description" content="giatmancua.vn" />
+  <meta name="keywords" content="giatmancua.vn" />
+  <meta name="author" content="SOHU" />
+  <title>Hệ quản trị nội dung - Content management system (CMS)</title>
+  <base href="/" />  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cms.giatmancua.vn/images/logo.png" />  
+  <link rel="manifest" href="https://cms.giatmancua.vn/manifest.json" />
+  <link rel="stylesheet" type="text/css" href="https://cms.giatmancua.vn/app-assets/vendors/vendors.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cms.giatmancua.vn/app-assets/vendors/flag-icon/css/flag-icon.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cms.giatmancua.vn/app-assets/vendors/data-tables/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cms.giatmancua.vn/app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cms.giatmancua.vn/app-assets/vendors/data-tables/css/select.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cms.giatmancua.vn/app-assets/css/themes/vertical-menu-nav-dark-template/materialize.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cms.giatmancua.vn/app-assets/css/themes/vertical-menu-nav-dark-template/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://cms.giatmancua.vn/app-assets/css/pages/data-tables.css" />
+  <link rel="stylesheet" type="text/css" href="https://cms.giatmancua.vn/app-assets/css/custom/custom.css" />
+  <link rel="stylesheet" type="text/css" href="https://cms.giatmancua.vn/app-assets/css/pages/login.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
+  <style>
+    .border,
+    .border td,
+    .border th {
+      border-color: #000000;
+      border-style: solid;
+      border-width: 1px;
+      padding: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .border {
+      border-collapse: collapse;
+    }
+
+    .border th {
+      text-align: center;
+    }
+
+    .border td {
+      text-align: right;
+    }
+
+    .border .text {
+      text-align: left;
+    }
+
+    .border01,
+    .border01 td,
+    .border01 th {
+      border-color: #000000;
+      border-style: solid;
+      border-width: 1px;
+      padding: 10px;
+      font-size: 11px;
+    }
+
+    .border01 {
+      border-collapse: collapse;
+    }
+
+    .border01 th {
+      text-align: center;
+    }
+
+    .border01 td {
+      text-align: right;
+    }
+
+    .border01 .text {
+      text-align: left;
+    }
+
+    .KhungOverflow {
+      height: auto;
+      width: 100%;
+      overflow: auto;
+    }
+
+    .mat-header-cell {
+      display: flex;
+      justify-content: center;
+      color: #000000;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .mat-sort-header-container {
+      display: flex;
+      justify-content: center;
+      color: #000000;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .mat-column-STT {
+      flex: none;
+      width: 50px;
+      font-size: 12px;
+      color: #000000;
+      text-align: center;
+    }
+
+    .mat-column-ID {
+      flex: none;
+      width: 50px;
+      font-size: 12px;
+      color: #000000;
+      text-align: center;
+    }
+
+    .mat-column-SortOrder {
+      flex: none;
+      width: 100px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-ParentID {
+      flex: none;
+      width: 200px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-Title {
+      flex: none;
+      width: 30%;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-actions {
+      flex: none;
+      width: 150px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-MembershipCode {
+      flex: none;
+      width: 200px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-TaxCode {
+      flex: none;
+      width: 150px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-Phone {
+      flex: none;
+      width: 200px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-FullName {
+      flex: none;
+      width: 400px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-Account {
+      flex: none;
+      width: 200px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-Year {
+      flex: none;
+      width: 100px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-CityName {
+      flex: none;
+      width: 200px;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .mat-column-YearSum {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 10px;
+    }
+
+    .mat-column-Thang01 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 10px;
+    }
+
+    .mat-column-Thang02 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 10px;
+    }
+
+    .mat-column-Thang03 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 10px;
+    }
+
+    .mat-column-Thang04 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 20px;
+    }
+
+    .mat-column-Thang05 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 20px;
+    }
+
+    .mat-column-Thang06 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 20px;
+    }
+
+    .mat-column-Thang07 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 20px;
+    }
+
+    .mat-column-Thang08 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 20px;
+    }
+
+    .mat-column-Thang09 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 20px;
+    }
+
+    .mat-column-Thang10 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 20px;
+    }
+
+    .mat-column-Thang11 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 20px;
+    }
+
+    .mat-column-Thang12 {
+      flex: none;
+      width: 120px;
+      font-size: 12px;
+      color: #000000;
+      padding-right: 20px;
+    }
+
+    mat-select {
+      border-bottom-color: #000000;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+    }    
+  </style>
+</head>
+
+<body>
+  <app-root></app-root>
+  <script src="https://cms.giatmancua.vn/app-assets/js/vendors.min.js" type="text/javascript"></script>
+  <script src="https://cms.giatmancua.vn/app-assets/vendors/data-tables/js/jquery.dataTables.min.js"
+    type="text/javascript"></script>
+  <script
+    src="https://cms.giatmancua.vn/app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js"
+    type="text/javascript"></script>
+  <script src="https://cms.giatmancua.vn/app-assets/vendors/data-tables/js/dataTables.select.min.js"
+    type="text/javascript"></script>
+  <script src="https://cms.giatmancua.vn/app-assets/js/plugins.js" type="text/javascript"></script>
+  <script src="https://cms.giatmancua.vn/app-assets/js/custom/custom-script.js" type="text/javascript"></script>
+  <script src="https://cms.giatmancua.vn/app-assets/js/scripts/data-tables.js" type="text/javascript"></script>
+</body>
+
+</html>

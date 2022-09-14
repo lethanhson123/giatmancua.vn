@@ -1,0 +1,144 @@
+<div class="row">
+  <div class="col s12">
+    <div class="container">
+      <div class="section section-data-tables">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <div class="card card card-default scrollspy">
+              <div class="card-content">
+                <div class="col s12 m12 l9">
+                  <h3 class="card-title">
+                    <b
+                      >{{ aM_PhieuYeuCauService.formDataViewModel.TieuDe }} -
+                      {{ aM_PhieuYeuCauService.formDataViewModel.NguoiTao }} -
+                      {{
+                        aM_PhieuYeuCauService.formDataViewModel.NgayTao
+                          | date
+                            : "dd/MM/yyyy
+                                            HH:mm:ss"
+                      }}</b
+                    >
+                  </h3>
+                </div>
+                <div class="col s12 m12 l3"></div>
+                <div class="row">
+                  <div class="col s12 m12 l12">
+                    <div class="form-group">
+                      <label for="FullName" style="font-weight: unset"
+                        >Khách hàng:
+                      </label>
+                      <b>{{
+                        aM_PhieuYeuCauService.formDataViewModel.FullName                          
+                      }}</b>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col s12 m4 l4">
+                    <div class="form-group">
+                      <label for="SoLuongHoaDon" style="font-weight: unset"
+                        >Số lượng hóa đơn:
+                      </label>
+                      <b>{{
+                        aM_PhieuYeuCauService.formDataViewModel.SoLuongHoaDon
+                          | currency: "VND":""
+                      }}</b>
+                    </div>
+                  </div>
+                  <div class="col s12 m4 l4">
+                    <div class="form-group">
+                      <label for="NgonNgu" style="font-weight: unset"
+                        >Ngôn ngữ:
+                      </label>
+                      <b>{{
+                        aM_PhieuYeuCauService.formDataViewModel.NgonNgu
+                      }}</b>
+                    </div>
+                  </div>
+                  <div class="col s12 m4 l4">
+                    <div class="form-group">
+                      <label for="HeThong" style="font-weight: unset"
+                        >Hệ thống:
+                      </label>
+                      <b>{{
+                        aM_PhieuYeuCauService.formDataViewModel.HeThong
+                      }}</b>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col s12 m4 l4">
+                    <div class="form-group">
+                      <label for="KyHieu" style="font-weight: unset"
+                        >Ký hiệu:
+                      </label>
+                      <b>{{
+                        aM_PhieuYeuCauService.formDataViewModel.KyHieu
+                      }}</b>
+                    </div>
+                  </div>
+                  <div class="col s12 m4 l4">
+                    <div class="form-group">
+                      <label for="MauSo" style="font-weight: unset"
+                        >Mẫu số:
+                      </label>
+                      <b>{{ aM_PhieuYeuCauService.formDataViewModel.MauSo }}</b>
+                    </div>
+                  </div>
+                  <div class="col s12 m4 l4">
+                    <div class="form-group">
+                      <label for="MauHoaDon" style="font-weight: unset"
+                        >Mẫu hóa đơn:
+                      </label>
+                      <b>{{
+                        aM_PhieuYeuCauService.formDataViewModel.MauHoaDon
+                      }}</b>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col s12 m12 l12">
+                    <div class="form-group">
+                      <h1>File đính kèm</h1>      
+                      <ul>
+                        <li *ngFor="let item of listAM_PhieuYeuCau_ThuocTinh">
+                            <a title="{{item.URL}}}" target="_blank"
+                                href="{{item.URL}}">{{item.Title}}</a>
+                        </li>
+                    </ul>                                     
+                    </div>
+                  </div>                  
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col s12 m12 l12">
+                    <div class="form-group">
+                      <h1>Nội dung</h1>                      
+                      <b>{{
+                        aM_PhieuYeuCauService.formDataViewModel.NoiDung
+                      }}</b>
+                    </div>
+                  </div>                  
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col s12 m12 l12">
+                    <div class="form-group">
+                      <h1>Kết quả</h1>                      
+                      <b>{{
+                        aM_PhieuYeuCauService.formDataViewModel.KetQua
+                      }}</b>
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

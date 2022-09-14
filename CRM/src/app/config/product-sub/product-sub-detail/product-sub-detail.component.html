@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col s12">
+    <div class="container">
+      <div class="section section-data-tables">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+              <div class="col s12 m9 l9">
+                <h3 class="card-title"><b>Gói cước - Chi tiết</b></h3>
+              </div>
+              <div class="col s12 m3 l3">
+                <button type="submit" class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                    class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                <a class="mb-6 btn-floating waves-effect waves-light purple lightrn-1" (click)="onClose()">
+                  <i class="material-icons">close</i>
+                </a>
+              </div>
+              <div class="row">
+                <input name="ID" [(ngModel)]="configService.formData.ID" type="hidden">
+                <div class="col s12">
+                  <div class="input-field col s12 m12 l6">
+                    <mat-label for="ParentID">Dịch vụ</mat-label>
+                    <mat-select name="ParentID" [(ngModel)]="configService.formData.ParentID">
+                      <mat-option [(value)]="configService.formData.ParentID">
+                        Dịch vụ
+                      </mat-option>
+                      <input (keyup)="onFilterProduct($event.target.value)">
+                      <mat-option *ngFor="let item of listProduct" [value]="item.ID">
+                        {{item.Title}}
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="input-field col s12 m12 l6">
+                    <input cdkFocusInitial name="Title" [(ngModel)]="configService.formData.Title" type="text">
+                    <label>Gói cước</label>
+                  </div>
+                  <div class="input-field col s12 m12 l6">
+                    <input cdkFocusInitial name="GiaCuoc" [(ngModel)]="configService.formData.GiaCuoc" type="number">
+                    <label>Giá cước</label>
+                  </div>
+                  <div class="input-field col s12 m12 l6">
+                    <input cdkFocusInitial name="Token" [(ngModel)]="configService.formData.Token" type="number">
+                    <label>Token</label>
+                  </div>
+                  <div class="input-field col s12 m12 l6">
+                    <input disabled cdkFocusInitial name="TongTien" [(ngModel)]="configService.formData.TongTien"
+                      type="number">
+                    <label>Tổng tiền</label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

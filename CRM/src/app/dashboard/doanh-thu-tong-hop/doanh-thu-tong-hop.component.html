@@ -1,0 +1,218 @@
+<div class="section section-data-tables">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <h4 class="card-title">Doanh thu tổng hợp (Đơn vị tính: đồng)
+          </h4>
+          <div class="row">
+            <div class="col s12">
+              <div class="KhungOverflow">
+                <mat-table [dataSource]="dataSourceDashboard00000DoanhThuTongHop" matSort>
+                  <ng-container matColumnDef="Year">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Năm
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:50px; text-align: center;">
+                        {{element.Year}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="YearSum">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Doanh thu
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.YearSum | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang01">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 01
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang01 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang02">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 02
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang02 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang03">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 03
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang03 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang04">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 04
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang04 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang05">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 05
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang05 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang06">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 06
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang06 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang07">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 07
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang07 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang08">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 08
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang08 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang09">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 09
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang09 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang10">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 10
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang10 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang11">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 11
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang11 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Thang12">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tháng 12
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <div style="width:120px; text-align: right;">
+                        {{element.Thang12 | currency:'VND':''}}
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="loading">
+                    <mat-footer-cell *matFooterCellDef colspan="4">
+                      Đang tải dữ liệu...
+                    </mat-footer-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="noData">
+                    <mat-footer-cell *matFooterCellDef colspan="4">
+                      Chưa có dữ liệu.
+                    </mat-footer-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="displayColumnsDashboard00000DoanhThuTongHop"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayColumnsDashboard00000DoanhThuTongHop;"></mat-row>
+                  <mat-footer-row *matFooterRowDef="['loading']"
+                    [ngClass]="{'hide':dataSourceDashboard00000DoanhThuTongHop!=null}"></mat-footer-row>
+                  <mat-footer-row *matFooterRowDef="['noData']"
+                    [ngClass]="{'hide':!(dataSourceDashboard00000DoanhThuTongHop!=null && dataSourceDashboard00000DoanhThuTongHop.data.length==0)}">
+                  </mat-footer-row>
+                </mat-table>               
+              </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section section-data-tables">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <h4 class="card-title">Doanh thu so sánh 03 năm gần nhất (Đơn vị tính: triệu đồng)
+          </h4>
+          <div class="row">
+            <div class="col s12">                        
+              <canvas baseChart height="200" [datasets]="lineChartData" [labels]="lineChartLabels"
+                [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+                [chartType]="lineChartType" [plugins]="lineChartPlugins">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section section-data-tables">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <div class="row">
+            <div class="col s12 m12 l9">
+              <h3 class="card-title"><b>Doanh thu tổng hợp theo năm (Đơn vị tính: triệu đồng)</b></h3>
+            </div>
+            <div class="col s12 m12 l3">
+              <mat-select name="year" [(value)]="year" (selectionChange)="onChangeYear($event)">
+                <mat-option *ngFor="let item of listYear" [value]="item.Display">
+                  {{item.Display}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="KhungOverflow">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                  [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType"
+                  [colors]="barChartColors">
+                </canvas>
+                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                  [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                </canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
