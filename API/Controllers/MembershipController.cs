@@ -512,6 +512,8 @@ namespace VNPT2021.API.Controllers
                 model001.Twitter = model.Twitter;
                 model001.Instagram = model.Instagram;
                 model001.GoogleMap = model.GoogleMap;
+                model001.Account = model.Account;
+                model001.Password = model.Password;
                 if (!string.IsNullOrEmpty(model.Image))
                 {
                     model001.Image = model.Image;

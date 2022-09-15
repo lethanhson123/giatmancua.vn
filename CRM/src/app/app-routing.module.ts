@@ -135,7 +135,7 @@ const routes: Routes = [
     path: 'Contact', component: ContactComponent,
   },
   {
-    path: 'VNPTInfo', component: VNPTInfoComponent,
+    path: 'Admin', component: VNPTInfoComponent,
   },
   {
     path: 'Login', component: LoginComponent,

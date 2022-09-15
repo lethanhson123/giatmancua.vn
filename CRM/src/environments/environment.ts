@@ -36,7 +36,7 @@ export const environment = {
   Phone: "Phone",
   Image: "Image",
   LoginSubURL: "/Login",
-  DefaultSubURL: "Dashboard/TongQuan",
+  DefaultSubURL: "Admin",
   ProvinceTitle: "Tỉnh Bà Rịa - Vũng Tàu",  
   PageTitle: "Trần gia",  
   DeleteConfirm: "Bạn muốn xóa dữ liệu này?",

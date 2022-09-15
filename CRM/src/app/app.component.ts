@@ -20,7 +20,7 @@ export class AppComponent {
   constructor(private cookieService: CookieService,
     private appGlobalService: AppGlobalService,
     private router: Router) {
-    //this.onCheckCookie();
+    this.onCheckCookie();
     //this.onCheckHiden();
   }
   onCheckHiden() {
