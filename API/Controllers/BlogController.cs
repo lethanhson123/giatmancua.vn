@@ -287,11 +287,12 @@ namespace VNPT2021.API.Controllers
                 }
                 catch (Exception e)
                 {
-
+                    string mes = e.Message;
                 }
             }
             return blog.ID;
         }
+        [HttpGet]
         public JsonResult InitializationSiteMapToXML()
         {
             string result = AppGlobal.InitializationString;

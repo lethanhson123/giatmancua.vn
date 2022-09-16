@@ -36,6 +36,7 @@ namespace Website
             services.AddTransient<IBlogTagRepository, BlogTagRepository>();            
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IMembershipRepository, MembershipRepository>();
+            services.AddTransient<IMembershipAddressRepository, MembershipAddressRepository>();
             services.AddTransient<IContactRepository, ContactRepository>();
             services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
         }

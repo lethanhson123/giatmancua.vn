@@ -16,6 +16,7 @@ namespace VNPT2021.Data.Models
         }
 
         
+        public virtual DbSet<VNPT2021.Data.Models.MembershipAddress> MembershipAddress { get; set; }
         public virtual DbSet<VNPT2021.Data.Models.Membership> Membership { get; set; }
         public virtual DbSet<VNPT2021.Data.Models.Blog> Blog { get; set; }
         public virtual DbSet<VNPT2021.Data.Models.BlogCategory> BlogCategory { get; set; }

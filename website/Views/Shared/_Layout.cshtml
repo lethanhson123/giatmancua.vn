@@ -1,10 +1,12 @@
 ﻿@inject VNPT2021.Data.Repositories.IMembershipRepository membershipRepository
+@inject VNPT2021.Data.Repositories.IMembershipAddressRepository membershipAddressRepository
 @inject VNPT2021.Data.Repositories.IBlogCategoryRepository blogCategoryRepository
 @inject VNPT2021.Data.Repositories.IBlogRepository blogRepository
 
 @{
 	VNPT2021.Data.Models.Membership vnpt = membershipRepository.GetByVNPTID();
-	List<VNPT2021.Data.Models.BlogCategory> listBlogCategory = blogCategoryRepository.GetByActiveIsTrueToList();
+	List<VNPT2021.Data.Models.MembershipAddress> listMembershipAddress = membershipAddressRepository.GetAllToList();
+	List<VNPT2021.Data.Models.BlogCategory> listBlogCategory = blogCategoryRepository.GetByActiveIsTrueToList();	
 	List<VNPT2021.Data.Models.Blog> listBlog = blogRepository.GetByParentIDAndActiveToList(VNPT2021.Helpers.AppGlobal.BlogCategoryGioiThieuID, true).OrderBy(model => model.SortOrder).ToList();
 }
 
@@ -345,7 +347,12 @@
 							</div>
 							<div class="footer-address">
 								<h5>Địa chỉ</h5>
-								<p><a target="_blank" href="https://www.google.com/maps/place/@vnpt.Address">@vnpt.Address</a></p>
+								@{
+									foreach (VNPT2021.Data.Models.MembershipAddress item in listMembershipAddress)
+									{
+										@Html.Raw("<p>" + item.Address + "</p> <br/>");
+									}
+								}								
 							</div>
 							<div class="grb__social footer-social">
 								<ul>
@@ -424,7 +431,7 @@
 					</div>
 					<div class="col-lg-4 col-md-6">
 						<div class="copyright-text">
-							<p>Bản quyền thuộc về <a href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="@VNPT2021.Helpers.AppGlobal.PageTitle">Trần gia</a> | Bảo lưu tất cả các quyền</p>
+							<p>Bản quyền thuộc về <a href="@VNPT2021.Helpers.AppGlobal.DomainURL" title="@VNPT2021.Helpers.AppGlobal.PageTitle">@vnpt.ShortName</a></p>
 						</div>
 					</div>
 					<div class="col-lg-5 col-md-6">

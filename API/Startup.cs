@@ -30,6 +30,7 @@ namespace API
             services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddDbContext<VNPTContext>();            
             services.AddTransient<IMembershipRepository, MembershipRepository>();
+            services.AddTransient<IMembershipAddressRepository, MembershipAddressRepository>();
             services.AddTransient<IBlogCategoryRepository, BlogCategoryRepository>();
             services.AddTransient<IBlogCommentRepository, BlogCommentRepository>();
             services.AddTransient<IBlogFileRepository, BlogFileRepository>();

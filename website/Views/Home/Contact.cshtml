@@ -1,4 +1,5 @@
 ﻿@inject VNPT2021.Data.Repositories.IMembershipRepository membershipRepository
+@inject VNPT2021.Data.Repositories.IMembershipAddressRepository membershipAddressRepository
 @model VNPT2021.Data.Models.Contact;
 @{
 	string url = VNPT2021.Helpers.AppGlobal.DomainURL + "lien-he.html";
@@ -8,7 +9,7 @@
 	ViewData["URLImage"] = VNPT2021.Helpers.AppGlobal.HomepageImageURL;
 
 	VNPT2021.Data.Models.Membership vnpt = membershipRepository.GetByVNPTID();
-
+	List<VNPT2021.Data.Models.MembershipAddress> listMembershipAddress = membershipAddressRepository.GetAllToList();
 }
 <script>
 	function onClickSaveContact() {
@@ -71,7 +72,30 @@
 								<span><a target="_blank" title="@vnpt.Email" href='https://mail.google.com/mail/u/0/?view=cm&fs=1&to=@vnpt.Email&su=Hi_@vnpt.Email&body=&tf=1'>@vnpt.Email</a></span>
 							</div>
 						</li>
-						<li>
+						@{
+							foreach (VNPT2021.Data.Models.MembershipAddress item in listMembershipAddress)
+							{
+								@Html.Raw("<li>");
+								@Html.Raw("<div class='contact-list-icon'>")
+								;
+								@Html.Raw("<i class='fas fa-map-marker-alt'></i>")
+								;
+								@Html.Raw("</div>")
+								;
+								@Html.Raw("<div class='contact-list-text'>")
+								;
+								@Html.Raw("<span>")
+								;
+								@Html.Raw("" + item.Address)
+								;
+								@Html.Raw("</span>")
+								;
+								@Html.Raw("</div>")
+								;
+								@Html.Raw("</li>");
+							}
+						}
+						@*<li>
 							<div class="contact-list-icon">
 								<i class="fas fa-map-marker-alt"></i>
 							</div>
@@ -82,7 +106,7 @@
 									</a>
 								</span>
 							</div>
-						</li>
+						</li>*@
 					</ul>
 				</div>
 			</div>
