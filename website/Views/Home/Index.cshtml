@@ -36,6 +36,7 @@
 	VNPT2021.Data.Models.Blog gioiThieu = blogRepository.GetByID(VNPT2021.Helpers.AppGlobal.BlogGioiThieuID);
 	VNPT2021.Data.Models.Blog chinhSachBaoMat = blogRepository.GetByID(VNPT2021.Helpers.AppGlobal.BlogChinhSachBaoMatID);
 	VNPT2021.Data.Models.Blog suMenhTamNhin = blogRepository.GetByID(VNPT2021.Helpers.AppGlobal.BlogSuMenhTamNhinID);
+	VNPT2021.Data.Models.Blog giatManCua = blogRepository.GetByID(9);
 }
 
 <section class="slider-area p-relative fix">
@@ -44,53 +45,53 @@
 			@{
 				foreach (VNPT2021.Data.Models.Blog item in listBlogBanner)
 				{
-					@Html.Raw(@"<div class='single-slider slider-height swiper-slide slider-overlay' data-swiper-autoplay='5000'>")
+										@Html.Raw(@"<div class='single-slider slider-height swiper-slide slider-overlay' data-swiper-autoplay='5000'>")
 					;
-					@Html.Raw(@"<div class='slide-bg' data-background='"+item.URLImage+"'></div>")
+										@Html.Raw(@"<div class='slide-bg' data-background='"+item.URLImage+"'></div>")
 					;
-					@Html.Raw(@"<div class='container'>")
+										@Html.Raw(@"<div class='container'>")
 					;
-					@Html.Raw(@"<div class='row''>")
+										@Html.Raw(@"<div class='row''>")
 					;
-					@Html.Raw(@"<div class='col-lg-9'>")
+										@Html.Raw(@"<div class='col-lg-9'>")
 					;
-					@Html.Raw(@"<div class='hero-content'>")
+										@Html.Raw(@"<div class='hero-content'>")
 					;
-					@Html.Raw(@"<div class='hero-bg-shape' data-animation='fadeInUp' data-delay='.3s'>")
+										@Html.Raw(@"<div class='hero-bg-shape' data-animation='fadeInUp' data-delay='.3s'>")
 					;
-					@Html.Raw(@"<div class='hero-s-1'>")
+										@Html.Raw(@"<div class='hero-s-1'>")
 					;
-					@Html.Raw(@"<img src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"assets/img/shape/hero-s-1.png' alt='"+item.Title+"' title='"+item.Title+"'>")
+										@Html.Raw(@"<img src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"assets/img/shape/hero-s-1.png' alt='"+item.Title+"' title='"+item.Title+"'>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
-					@Html.Raw(@"<div class='hero-s-2'>")
+										@Html.Raw(@"<div class='hero-s-2'>")
 					;
-					@Html.Raw(@"<img src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"assets/img/shape/hero-s-2.png' alt='"+item.Title+"' title='"+item.Title+"'>")
+										@Html.Raw(@"<img src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"assets/img/shape/hero-s-2.png' alt='"+item.Title+"' title='"+item.Title+"'>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
-					@Html.Raw(@"<p data-animation='fadeInUp' data-delay='.6s' style='text-shadow: 3px 3px #000000; line-height: 40px;'>"+item.Description+"</p>")
+										@Html.Raw(@"<p data-animation='fadeInUp' data-delay='.6s' style='text-shadow: 3px 3px #000000; line-height: 40px;'>"+item.Description+"</p>")
 					;
-					@Html.Raw(@"<h1 data-animation='fadeInUp' data-delay='.9s' style='text-shadow: 3px 3px #000000; font-size: 60px;'>"+item.Title+"</h1>")
+										@Html.Raw(@"<h1 data-animation='fadeInUp' data-delay='.9s' style='text-shadow: 3px 3px #000000; font-size: 60px;'>"+item.Title+"</h1>")
 					;
-					@Html.Raw(@"<div class='hero-content-btn' data-animation='fadeInUp' data-delay='1.1s'>")
+										@Html.Raw(@"<div class='hero-content-btn' data-animation='fadeInUp' data-delay='1.1s'>")
 					;
-					@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL + item.Code + "/" + item.URLCode + "-" + item.ID +".html' class='grb-btn'>Đọc thêm</a>")
+										@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL + item.Code + "/" + item.URLCode + "-" + item.ID +".html' class='grb-btn'>Đọc thêm</a>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
 				}
 			}
@@ -111,7 +112,7 @@
 						@{
 								if (listBlogFileGioiThieu.Count > 0)
 								{
-									@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +"gioi-thieu.html' title='"+gioiThieu.Title+"'><img src='"+gioiThieu.URLImage+"' alt='"+gioiThieu.Title+"' title='"+gioiThieu.Title+"'></a>")
+														@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +"gioi-thieu.html' title='"+gioiThieu.Title+"'><img src='"+gioiThieu.URLImage+"' alt='"+gioiThieu.Title+"' title='"+gioiThieu.Title+"'></a>")
 									;
 								}
 						}						
@@ -122,7 +123,7 @@
 							@{
 								if (listBlogFileGioiThieu.Count > 0)
 								{
-									@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +"gioi-thieu.html' title='"+gioiThieu.Title+"'><img style='border: 4px solid #ffffff; border-radius: 12px;' src='"+listBlogFileGioiThieu[0].URLImage+"' alt='"+gioiThieu.Title+"' alt='"+gioiThieu.Title+"'></a>")
+														@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +"gioi-thieu.html' title='"+gioiThieu.Title+"'><img style='border: 4px solid #ffffff; border-radius: 12px;' src='"+listBlogFileGioiThieu[0].URLImage+"' alt='"+gioiThieu.Title+"' alt='"+gioiThieu.Title+"'></a>")
 									;
 								}
 							}
@@ -135,12 +136,12 @@
 					<div class="section-title mb-30">
 						<div class="border-left">
 							@{
-								@Html.Raw(@"<p><a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryGioiThieu.Code + "/" +blogCategoryGioiThieu.URLCode + "-" + blogCategoryGioiThieu.ID +".html' title='"+blogCategoryGioiThieu.Title+"'>"+blogCategoryGioiThieu.Title+"</a></p>")
+													@Html.Raw(@"<p><a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryGioiThieu.Code + "/" +blogCategoryGioiThieu.URLCode + "-" + blogCategoryGioiThieu.ID +".html' title='"+blogCategoryGioiThieu.Title+"'>"+blogCategoryGioiThieu.Title+"</a></p>")
 								;
 							}
 						</div>
 						@{
-							@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +"gioi-thieu.html' title='"+gioiThieu.Title+"'><h2>"+gioiThieu.Title+"</h2></a>")
+												@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +"gioi-thieu.html' title='"+gioiThieu.Title+"'><h2>"+gioiThieu.Title+"</h2></a>")
 							;
 						}
 					</div>
@@ -154,7 +155,7 @@
 									<i class="flaticon-team"></i>
 								</div>
 								@{
-									@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +suMenhTamNhin.Code + "/" +suMenhTamNhin.URLCode + "-" + suMenhTamNhin.ID +".html' title='"+suMenhTamNhin.Title+"'><h5>"+suMenhTamNhin.Title+"</h5></a>")
+														@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +suMenhTamNhin.Code + "/" +suMenhTamNhin.URLCode + "-" + suMenhTamNhin.ID +".html' title='"+suMenhTamNhin.Title+"'><h5>"+suMenhTamNhin.Title+"</h5></a>")
 									;
 								}
 							</div>
@@ -166,7 +167,7 @@
 									<i class="flaticon-creative-team"></i>
 								</div>
 								@{
-									@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +chinhSachBaoMat.Code + "/" +chinhSachBaoMat.URLCode + "-" + chinhSachBaoMat.ID +".html' title='"+chinhSachBaoMat.Title+"'><h5>"+chinhSachBaoMat.Title+"</h5></a>")
+														@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +chinhSachBaoMat.Code + "/" +chinhSachBaoMat.URLCode + "-" + chinhSachBaoMat.ID +".html' title='"+chinhSachBaoMat.Title+"'><h5>"+chinhSachBaoMat.Title+"</h5></a>")
 									;
 								}
 							</div>
@@ -185,6 +186,24 @@
 	</div>
 </section>
 
+<section class="estimonial-area st-1 portfolio-area" data-background="assets/img/bg/bg-shape.png">
+	<div class="container" style="-webkit-border-radius: 12px;-moz-border-radius: 12px;border-radius: 12px; border-width: 2px; border-color: #000000; border-style: solid;">
+		<div class="row wow fadeInUp align-items-center counter-head">
+			<div class="col-lg-12 col-md-12">
+				<div class="portfolio-left">
+					<div class="section-title mb-55" style="text-align:center;">						
+						<br/>
+						<a href='https://giatmancua.vn/Blog/giat-man-cua-9.html' title='@giatManCua.Title'><h2>@giatManCua.Title</h2></a>
+					</div>
+				</div>
+			</div>			
+		</div>
+		<div style="text-align:center;">
+			@Html.Raw(@giatManCua.HTMLContent);
+		</div>
+	</div>	
+</section>
+
 <section class="service__area grey-bg pt-120 pb-90">
 	<div class="container">
 		<div class="row wow fadeInUp">
@@ -192,12 +211,12 @@
 				<div class="section-title mb-55">
 					<div class="border-left">
 						@{
-							@Html.Raw(@"<p><a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryDichVu.Code + "/" +blogCategoryDichVu.URLCode + "-" + blogCategoryDichVu.ID +".html' title='"+blogCategoryDichVu.Title+"'>"+blogCategoryDichVu.Title+"</a></p>")
+												@Html.Raw(@"<p><a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryDichVu.Code + "/" +blogCategoryDichVu.URLCode + "-" + blogCategoryDichVu.ID +".html' title='"+blogCategoryDichVu.Title+"'>"+blogCategoryDichVu.Title+"</a></p>")
 							;
 						}
 					</div>
 					@{
-						@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryDichVu.Code + "/" +blogCategoryDichVu.URLCode + "-" + blogCategoryDichVu.ID +".html' title='"+blogCategoryDichVu.Title+"'><h2>"+blogCategoryDichVu.Title+"</h2></a>")
+											@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryDichVu.Code + "/" +blogCategoryDichVu.URLCode + "-" + blogCategoryDichVu.ID +".html' title='"+blogCategoryDichVu.Title+"'><h2>"+blogCategoryDichVu.Title+"</h2></a>")
 						;
 					}
 				</div>
@@ -221,9 +240,9 @@
 				{
 					VNPT2021.Data.Models.Blog item = listBlogDichVu[i];
 					string itemBlogURL=VNPT2021.Helpers.AppGlobal.DomainURL +item.Code + "/" +item.URLCode + "-" + item.ID +".html";
-					@Html.Raw(@"<div class='col-lg-4 col-md-6'>")
+										@Html.Raw(@"<div class='col-lg-4 col-md-6'>")
 					;
-					@Html.Raw(@"<div class='single__service text-center mb-30'>")
+										@Html.Raw(@"<div class='single__service text-center mb-30'>")
 					;
 					//@Html.Raw(@"<span class='service__icon'>")
 					//;				
@@ -245,15 +264,15 @@
 					//}
 					//@Html.Raw(@"</span>")
 					//;
-					@Html.Raw(@"<a href='"+itemBlogURL +"' title='"+item.Title+"'><img src='"+item.URLImage+"' width='100%' alt='"+item.Title+"' title='"+item.Title+"' /></a>")
+										@Html.Raw(@"<a href='"+itemBlogURL +"' title='"+item.Title+"'><img src='"+item.URLImage+"' width='100%' alt='"+item.Title+"' title='"+item.Title+"' /></a>")
 					;
-					@Html.Raw(@"<h4><a href='"+itemBlogURL +"' title='"+item.Title+"'>"+item.Title+"</a></h4>")
+										@Html.Raw(@"<h4><a href='"+itemBlogURL +"' title='"+item.Title+"'>"+item.Title+"</a></h4>")
 					;					
-					@Html.Raw(@"<a href='"+itemBlogURL +"' title='Đọc thêm' class='service__btn'><i class='fas fa-plus'></i>Đọc thêm</a>")
+										@Html.Raw(@"<a href='"+itemBlogURL +"' title='Đọc thêm' class='service__btn'><i class='fas fa-plus'></i>Đọc thêm</a>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
-					@Html.Raw(@"</div>")
+										@Html.Raw(@"</div>")
 					;
 				}
 			}
@@ -268,7 +287,7 @@
 			<div class="col-lg-6">
 				<div class="choosing__img mb-30">
 					@{
-						@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +khuyenMai01.Code + "/" +khuyenMai01.URLCode + "-" + khuyenMai01.ID +".html' title='"+khuyenMai01.Title+"'><img src='"+khuyenMai01.URLImage+"' title='"+khuyenMai01.Title+"' alt='"+khuyenMai01.Title+"'></a>")
+											@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +khuyenMai01.Code + "/" +khuyenMai01.URLCode + "-" + khuyenMai01.ID +".html' title='"+khuyenMai01.Title+"'><img src='"+khuyenMai01.URLImage+"' title='"+khuyenMai01.Title+"' alt='"+khuyenMai01.Title+"'></a>")
 						;
 					}
 
@@ -278,12 +297,12 @@
 				<div class="section-title mb-55">
 					<div class="border-left">
 						@{
-							@Html.Raw(@"<p><a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryKhuyenMai.Code + "/" +blogCategoryKhuyenMai.URLCode + "-" + blogCategoryKhuyenMai.ID +".html' title='"+blogCategoryKhuyenMai.Title+"'>"+blogCategoryKhuyenMai.Title+"</a></p>")
+												@Html.Raw(@"<p><a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryKhuyenMai.Code + "/" +blogCategoryKhuyenMai.URLCode + "-" + blogCategoryKhuyenMai.ID +".html' title='"+blogCategoryKhuyenMai.Title+"'>"+blogCategoryKhuyenMai.Title+"</a></p>")
 							;
 						}
 					</div>
 					@{
-						@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +khuyenMai01.Code + "/" +khuyenMai01.URLCode + "-" + khuyenMai01.ID +".html' title='"+khuyenMai01.Title+"'><h2>"+khuyenMai01.Title+"</h2></a>")
+											@Html.Raw(@"<a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +khuyenMai01.Code + "/" +khuyenMai01.URLCode + "-" + khuyenMai01.ID +".html' title='"+khuyenMai01.Title+"'><h2>"+khuyenMai01.Title+"</h2></a>")
 						;
 					}
 				</div>
@@ -299,23 +318,23 @@
 							{
 								VNPT2021.Data.Models.Blog item = listBlogKhuyenMai[i];
 								string itemBlogURL=VNPT2021.Helpers.AppGlobal.DomainURL +item.Code + "/" +item.URLCode + "-" + item.ID +".html";
-								@Html.Raw(@"<li>")
+													@Html.Raw(@"<li>")
 								;
-								@Html.Raw(@"<div class='choosing__number'>")
+													@Html.Raw(@"<div class='choosing__number'>")
 								;
-								@Html.Raw(@"<span>"+i+"</span>")
+													@Html.Raw(@"<span>"+i+"</span>")
 								;
-								@Html.Raw(@"</div>")
+													@Html.Raw(@"</div>")
 								;
-								@Html.Raw(@"<div class='choosing__text'>")
+													@Html.Raw(@"<div class='choosing__text'>")
 								;
-								@Html.Raw(@"<a href='"+ itemBlogURL +"' title='"+item.Title+"'>"+item.Title+"</a>")
+													@Html.Raw(@"<a href='"+ itemBlogURL +"' title='"+item.Title+"'>"+item.Title+"</a>")
 								;
-								@Html.Raw(@"<p>"+item.Description+"</p>")
+													@Html.Raw(@"<p>"+item.Description+"</p>")
 								;
-								@Html.Raw(@"</div>")
+													@Html.Raw(@"</div>")
 								;
-								@Html.Raw(@"</li>")
+													@Html.Raw(@"</li>")
 								;
 							}
 						}
@@ -326,211 +345,9 @@
 	</div>
 </section>
 
-<section class="estimonial-area st-1 portfolio-area" data-background="assets/img/bg/bg-shape.png">
-	<div class="container">
-		<div class="row wow fadeInUp align-items-center counter-head">
-			<div class="col-lg-6 col-md-7">
-				<div class="portfolio-left">
-					<div class="section-title mb-55">
-						<div class="border-left">
-							@{
-								@Html.Raw(@"<p><a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryKyThuat.Code + "/" +blogCategoryKyThuat.URLCode + "-" + blogCategoryKyThuat.ID +".html' title='"+blogCategoryKyThuat.Title+"'>"+blogCategoryKyThuat.Title+"</a></p>")
-								;
-							}
-						</div>
-						<h2>Hướng dẫn kỹ thuật</h2>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-5">
-				<div class="portfolio-right mb-30 text-md-end">
-					@{
-						@Html.Raw(@"<a class='grb-border-btn st-1' href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryKyThuat.Code + "/" +blogCategoryKyThuat.URLCode + "-" + blogCategoryKyThuat.ID +".html' title='"+blogCategoryKyThuat.Title+"'>Xem tất cả</a>")
-						;
-					}
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="portfolio-container">
-		<div class="portfolio-inner">
-			<div class="swiper-container portfolio-active">
-				<div class="swiper-wrapper">
-					@{
-						foreach (VNPT2021.Data.Models.Blog item in listBlogKyThuat)
-						{
-							string itemBlogURL=VNPT2021.Helpers.AppGlobal.DomainURL +item.Code + "/" +item.URLCode + "-" + item.ID +".html";
-							@Html.Raw(@"<div class='swiper-slide'>")
-							;
-							@Html.Raw(@"<div class='single-portfolio'>")
-							;
-							@Html.Raw(@"<div class='portfolio-img'>")
-							;
-							@Html.Raw(@"<a href='"+itemBlogURL +"' title='"+item.Title+"'><img src='"+item.URLImage+"' title='"+item.Title+"' alt='"+item.Title+"'></a>")
-							;
-							@Html.Raw(@"<br />")
-							;
-							@Html.Raw(@"<br />")
-							;
-							@Html.Raw(@"<a href='"+ itemBlogURL +"' title='"+item.Title+"'><h5>"+item.Title+"</h5></a>")
-							;
-							@Html.Raw(@"</div>")
-							;
-							@Html.Raw(@"<div class='portfolio-content'>")
-							;
-							@Html.Raw(@"<a href='"+ itemBlogURL +"' title='"+item.Title+"'><h5>"+item.Title+"</h5></a>")
-							;
-							@Html.Raw(@"<a class='p-link popup-image' href='"+ itemBlogURL +"' title='"+item.Title+"'><i class='fal fa-plus'></i></a>")
-							;
-							@Html.Raw(@"</div>")
-							;
-							@Html.Raw(@"</div>")
-							;
-							@Html.Raw(@"</div>")
-							;
-						}
-					}
 
-				</div>
-				<div class="portfolio-nav">
-					<div class="swiper-button-prev"><i class="far fa-arrow-left"></i></div>
-					<div class="swiper-button-next"><i class="far fa-arrow-right"></i></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 
-<section class="blog-area pt-120 pb-90">
-	<div class="container">
-		<div class="row wow fadeInUp align-items-center counter-head">
-			<div class="col-lg-6 col-md-8">
-				<div class="blog-left">
-					<div class="section-title mb-55">
-						<div class="border-left">
-							@{
-								@Html.Raw(@"<p><a href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryTinTuc.Code + "/" +blogCategoryTinTuc.URLCode + "-" + blogCategoryTinTuc.ID +".html' title='"+blogCategoryTinTuc.Title+"'>"+blogCategoryTinTuc.Title+"</a></p>")
-								;
-							}
-						</div>
-						<h2>Xu hướng công nghệ</h2>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-4">
-				<div class="blog-right mb-30 f-right">
-					@{
-						@Html.Raw(@"<a class='grb-btn' href='"+VNPT2021.Helpers.AppGlobal.DomainURL +blogCategoryTinTuc.Code + "/" + blogCategoryTinTuc.URLCode + "-" + blogCategoryTinTuc.ID +".html' title='"+blogCategoryTinTuc.Title+"'>Xem tất cả</a>")
-						;
-					}
-				</div>
-			</div>
-		</div>
-		<div class="row wow fadeInUp">
-			@{
-				count = 3;
-				if (listBlogTinTuc.Count < count)
-				{
-					count = listBlogTinTuc.Count;
-				}
-				for (int i = 0; i < count; i++)
-				{
-					VNPT2021.Data.Models.Blog item = listBlogTinTuc[i];
-					string itemBlogURL=VNPT2021.Helpers.AppGlobal.DomainURL +item.Code + "/" +item.URLCode + "-" + item.ID +".html";
-					@Html.Raw(@"<div class='col-lg-4 col-md-6'>")
-					;
-					@Html.Raw(@"<div class='blog-single mb-30 p-relative'>")
-					;
-					@Html.Raw(@"<div class='blog-date'>")
-					;
-					@Html.Raw(@"<div class='blog-date-shape'>")
-					;
-					@Html.Raw(@"<a href='"+ itemBlogURL +"' title='"+item.Title+"'><img src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"assets/img/shape/blog-date-shape.png' title='"+item.Title+"' alt='"+item.Title+"'></a>")
-					;
-					@Html.Raw(@"</div>")
-					;
-					@Html.Raw(@"<i class='fal fa-calendar-alt'></i>")
-					;
-					@Html.Raw(@"<span>"+item.DatePost.Value.Day+"</span>")
-					;
-					@Html.Raw(@"<p>"+item.DatePost.Value.ToString("MMMM") + " "+item.DatePost.Value.Year+"</p>")
-					;
-					@Html.Raw(@"</div>")
-					;
-					@Html.Raw(@"<div class='blog-img'>")
-					;
-					@Html.Raw(@"<a href='"+ itemBlogURL +"' title='"+item.Title+"'><img src='"+item.URLImage+"' title='"+item.Title+"' alt='"+item.Title+"'></a>")
-					;
-					@Html.Raw(@"</div>")
-					;
-					@Html.Raw(@"<div class='blog-content'>")
-					;
-					@Html.Raw(@"<h4>")
-					;
-					@Html.Raw(@"<a href='"+ itemBlogURL +"' title='"+item.Title+"'>"+item.Title+"</a>")
-					;
-					@Html.Raw(@"</h4>")
-					;
-					@Html.Raw(@"<p>"+item.Description+"</p>")
-					;
-					@Html.Raw(@"<a href='"+ itemBlogURL +"' title='"+item.Title+"'>Đọc thêm</a>")
-					;
-					@Html.Raw(@"</div>")
-					;
-					@Html.Raw(@"</div>")
-					;
-					@Html.Raw(@"</div>")
-					;
-				}
-			}
 
-		</div>
-	</div>
-</section>
-
-<section class="team-area grey-bg pt-115 pb-90">
-	<div class="container">
-		<div class="row wow fadeInUp">
-			<div class="col-lg-12">
-				<div class="section-title mb-55 text-center">
-					<div class="border-c-bottom">
-						<p>Đội ngũ kỹ thuật</p>
-					</div>
-					<h2>Chuyên nghiệp và luôn sẵn sàng</h2>
-				</div>
-			</div>
-		</div>
-		<div class="row wow fadeInUp">
-			@{
-				foreach (VNPT2021.Data.Models.Membership item in listNhanVien)
-				{					
-					@Html.Raw(@"<div class='col-lg-3 col-md-6'>");
-					@Html.Raw(@"<div class='team-member mb-30'>");
-
-					@Html.Raw(@"<div class='member-img'>");
-					@Html.Raw(@"<a t href='https://zalo.me/"+item.Phone+"' title='"+item.FullName+"'><img src='"+item.URLImage+"' alt='"+item.FullName+"' title='"+item.FullName+"'></a>");
-					@Html.Raw(@"</div>");
-
-					@Html.Raw(@"<div class='member-name p-relative'>");
-
-					@Html.Raw(@"<div class='member-name-bg'>");
-					@Html.Raw(@"<img src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"assets/img/shape/member-name-bg.png' alt='"+item.FullName+"' title='"+item.FullName+"'>");
-					@Html.Raw(@"<img src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"assets/img/shape/member-name-c-bg.png' alt='"+item.FullName+"' title='"+item.FullName+"'>");
-					@Html.Raw(@"</div>");
-
-					@Html.Raw(@"<h5><a href='https://zalo.me/"+item.Phone+"' title='"+item.FullName+"'>"+item.FullName+"</a></h5>");
-					@Html.Raw(@"<span>"+item.Description+"</span>");
-					@Html.Raw(@"<div class='member-social'>");
-					@Html.Raw(@"<a target='_blank' title='https://zalo.me/"+item.Phone+"' href='https://zalo.me/"+item.Phone+"'><img title='zalo' alt='zalo' src='"+VNPT2021.Helpers.AppGlobal.DomainURL+"images/zalo.png' /></a>");					
-					@Html.Raw(@"</div>");					
-					@Html.Raw(@"</div>");
-					@Html.Raw(@"</div>");
-					@Html.Raw(@"</div>");					
-				}
-			}
-		</div>
-	</div>
-</section>
 
 
 
